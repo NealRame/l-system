@@ -36,6 +36,11 @@ input, select {
     outline: none;
 }
 
+label {
+    font-size: smaller;
+    font-weight: bold;
+}
+
 #app {
     display: grid;
     grid-template-columns: 1fr 256px;
@@ -67,10 +72,13 @@ input, select {
 
 #l-system-inspector > section > header > h2 {
     color: #848484;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: bold;
+
     margin: 0;
     margin-left: .5rem;
+
+    text-transform: uppercase;
 }
 
 #l-system--alphabet-inspector ul {
@@ -151,5 +159,8 @@ input, select {
 #l-system--color-inspector > main {
     display: grid;
     grid-template-columns: 1fr 6ch;
+    align-items: center;
+    gap: 0.25rem;
+    text-transform: capitalize;
 }
 
