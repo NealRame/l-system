@@ -11,6 +11,7 @@ import AxiomInspector from "./axiom"
 import RulesInspector from "./rules"
 import ActionsInspector from "./actions"
 import StepsInspector from "./steps"
+import ColorsInpector from "./colors"
 
 type InspectorProps = {
     axiom: ILSystemWord,
@@ -24,6 +25,12 @@ type InspectorProps = {
 
     step: number
     onStepChange: (step: number) => void
+
+    backgroundColor: string
+    onBackgroundColorChange: (backgroundColor: string) => void
+
+    color: string,
+    onColorChange: (color: string) => void
 }
 
 const Inspector = ({
@@ -31,6 +38,8 @@ const Inspector = ({
     rules, onRulesChange,
     actions, onActionsChange,
     step, onStepChange,
+    backgroundColor, onBackgroundColorChange,
+    color, onColorChange,
 }: InspectorProps) => {
     const [alphabet, setAlphabet] = React.useState<ILSystemWord>([
         ...new Set(Object.keys(rules))
@@ -47,6 +56,12 @@ const Inspector = ({
         <RulesInspector alphabet={ alphabet } rules={ rules } onRulesChange={ onRulesChange } />
         <ActionsInspector alphabet={ alphabet } actions={ actions } onActionsChange={ onActionsChange } />
         <StepsInspector steps={ step } max={ 16 } onStepsChange={ onStepChange } />
+        <ColorsInpector
+            backgroundColor={ backgroundColor }
+            onBackgroundColorChange={ onBackgroundColorChange }
+            color={ color }
+            onColorChange={ onColorChange }
+        />
     </form>
 }
 

@@ -14,11 +14,13 @@ const app = () => {
     const [rules, setRules] = React.useState<Partial<ILSystemRules>>({})
     const [actions, setActions] = React.useState<Partial<ILSystemTurtleActions>>({})
     const [step, setStep] = React.useState<number>(0)
+    const [backgroundColor, setBackgroundColor] = React.useState<string>("#212121")
+    const [color, setColor] = React.useState<string>("#ffffff")
 
     return <>
         <SVGLSystem
-            backgroundColor="black"
-            color="rebeccapurple"
+            backgroundColor={ backgroundColor }
+            color={ color }
             padding={ 8 }
             axiom={ axiom as ILSystemWord }
             rules={ rules as ILSystemRules }
@@ -26,6 +28,12 @@ const app = () => {
             steps={ step }
         />
         <Inspector
+            backgroundColor={ backgroundColor }
+            onBackgroundColorChange={ setBackgroundColor }
+
+            color={ color }
+            onColorChange={ setColor }
+
             axiom={ axiom }
             onAxiomChange={ setAxiom }
 
