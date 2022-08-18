@@ -24,8 +24,11 @@ button:hover {
 }
 
 #app {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 256px;
+
+    width: 100vw;
+    height: 100vh;
 }
 
 #l-system-inspector {
