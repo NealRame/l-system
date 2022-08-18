@@ -46,7 +46,7 @@ const Inspector = ({
         <AxiomInspector alphabet={ alphabet } axiom={ axiom } onAxiomChange={ onAxiomChange } />
         <RulesInspector alphabet={ alphabet } rules={ rules } onRulesChange={ onRulesChange } />
         <ActionsInspector alphabet={ alphabet } actions={ actions } onActionsChange={ onActionsChange } />
-        <StepsInspector steps={ step } onStepsChange={ onStepChange } />
+        <StepsInspector steps={ step } max={ 16 } onStepsChange={ onStepChange } />
     </form>
 }
 
