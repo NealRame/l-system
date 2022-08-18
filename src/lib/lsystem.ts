@@ -1,5 +1,5 @@
 import type {
-    ITurtle,
+    ITurtleAction,
 } from "./types"
 
 export const Symbols = [
@@ -19,13 +19,13 @@ export type ILSystemRules<Alphabet extends ILSystemSymbols = ILSystemSymbols>
 
 export type ILSystemTurtleActions<Alphabet extends ILSystemSymbols = ILSystemSymbols>
     = {
-    [key in Alphabet]: (turtle: ITurtle) => void
+    [key in Alphabet]: ITurtleAction
 }
 
 export class LSystem<Alphabet extends ILSystemSymbols> {
     private apply_(symbol: Alphabet)
         : ILSystemWord<Alphabet> {
-        return this.rules_[symbol]
+        return this.rules_[symbol] ?? [symbol]
     }
 
     private step_(word: ILSystemWord<Alphabet>)

@@ -5,10 +5,17 @@ export interface IRect {
     h: number
 }
 
+export type ITurtleAction =
+    ["forward", number]
+    | ["turn", number]
+    | ["pop"]
+    | ["push"]
+    | ["noop"]
+
 export interface ITurtle {
     forward(len: number): void
     turn(angle: number): void
     push(): void
     pop(): void
+    noop(): void
 }
-

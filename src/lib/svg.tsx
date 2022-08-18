@@ -49,12 +49,22 @@ export function SVGLSystem<Alphabet extends ILSystemSymbols>(
         x: 0, y: 0, w: 0, h: 0,
     })
 
+    const actionRunner = (turtle: SVGTurtle) => {
+        return (symbol: Alphabet) => {
+            if (symbol in actions) {
+                const [action, ...args] = actions[symbol]
+                ;(turtle[action] as Function).call(turtle, ...args)
+            }
+        }
+    }
+
     React.useEffect(() => {
         const turtle = new SVGTurtle()
         const lsystem = new LSystem(rules)
         const word = lsystem.generate(axiom, steps)
 
-        word.forEach(symbol => actions[symbol](turtle))
+        word.forEach(actionRunner(turtle))
+
         setPath(turtle.path)
         setViewport(turtle.rect)
     }, [props])

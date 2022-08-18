@@ -22,6 +22,10 @@ export class SVGTurtle implements ITurtle {
         this.d_ = `M${this.x_} ${this.y_}`
     }
 
+    noop(): void {
+        // noop
+    }
+
     turn(angle: number): void {
         this.cap_ -= angle
     }
