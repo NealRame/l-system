@@ -1,42 +1,38 @@
 import * as React from "react"
 
 interface IColorsInspectorProps {
-    backgroundColor: string
-    onBackgroundColorChange: (color: string) => void
+    background: string
+    onBackgroundChange: (color: string) => void
 
-    color: string
-    onColorChange: (color: string) => void
+    stroke: string
+    onStrokeChange: (color: string) => void
 }
 
-const ColorsInspector = ({
-    backgroundColor,
-    onBackgroundColorChange,
-    color,
-    onColorChange,
-}: IColorsInspectorProps) => {
-    return <section id="l-system--color-inspector">
+const ColorsInspector = (props: IColorsInspectorProps) => {
+    const id = "l-system--colors-inspector"
+    const callbacks = {
+        background: props.onBackgroundChange,
+        stroke: props.onStrokeChange,
+    }
+    return <section id={ id }>
         <header>
             <h2>Colors</h2>
         </header>
         <main>
-            <label htmlFor="background">background</label>
-            <input
-                name="background"
-                type="color"
-                value={ backgroundColor }
-                onChange={ e => {
-                    onBackgroundColorChange(e.target.value)
-                } }
-            />
-            <label htmlFor="foreground">foreground</label>
-            <input
-                name="foreground"
-                type="color"
-                value={ color }
-                onChange={ e => {
-                    onColorChange(e.target.value)
-                } }
-            />
+            { (["background", "stroke"] as const).map(type => {
+                const colorId = `${ id }--${ type }`
+                return <>
+                    <label htmlFor={ `${id}--${type}`}>{ type }</label>
+                    <input
+                        id={ colorId }
+                        type="color"
+                        value={ props[type] }
+                        onChange={ e => {
+                            callbacks[type](e.target.value)
+                        } }
+                    />
+                </>
+            }) }
         </main>
     </section>
 }

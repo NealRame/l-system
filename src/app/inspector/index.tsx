@@ -57,10 +57,10 @@ const Inspector = ({
         <ActionsInspector alphabet={ alphabet } actions={ actions } onActionsChange={ onActionsChange } />
         <StepsInspector steps={ step } max={ 16 } onStepsChange={ onStepChange } />
         <ColorsInpector
-            backgroundColor={ backgroundColor }
-            onBackgroundColorChange={ onBackgroundColorChange }
-            color={ color }
-            onColorChange={ onColorChange }
+            background={ backgroundColor }
+            onBackgroundChange={ onBackgroundColorChange }
+            stroke={ color }
+            onStrokeChange={ onColorChange }
         />
     </form>
 }
