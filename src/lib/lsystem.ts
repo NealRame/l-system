@@ -3,7 +3,7 @@ import type {
 } from "./types"
 
 export const Symbols = [
-    "A", "B", "C", "D", "E", "G", "F", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "-", "+", "[", "]"
+    "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "-", "+", "[", "]"
 ] as const
 
 export type ILSystemSymbols
