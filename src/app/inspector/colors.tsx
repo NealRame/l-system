@@ -21,7 +21,7 @@ const ColorsInspector = (props: IColorsInspectorProps) => {
         <main>
             { (["background", "stroke"] as const).map(type => {
                 const colorId = `${ id }--${ type }`
-                return <>
+                return <React.Fragment key={ type }>
                     <label htmlFor={ `${id}--${type}`}>{ type }</label>
                     <input
                         id={ colorId }
@@ -31,7 +31,7 @@ const ColorsInspector = (props: IColorsInspectorProps) => {
                             callbacks[type](e.target.value)
                         } }
                     />
-                </>
+                </React.Fragment>
             }) }
         </main>
     </section>

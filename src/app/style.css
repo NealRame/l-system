@@ -70,7 +70,7 @@ label {
     margin-bottom: 1rem;
 }
 
-#l-system-inspector > section > header > h2 {
+#l-system-inspector > section > header h2 {
     color: #848484;
     font-size: 1rem;
     font-weight: bold;
@@ -119,11 +119,6 @@ label {
     grid-template-columns: 1rem 1fr;
     align-items: center;
     gap: 0.25rem;
-}
-
-.l-system--rules-inspector-rule-symbol {
-    font-size: smaller;
-    font-weight: bold;
 }
 
 #l-system--actions-inspector ul {

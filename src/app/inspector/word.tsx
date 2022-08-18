@@ -6,17 +6,20 @@ import {
 } from "../../lib"
 
 interface IWordInspectorProps {
+    id: string
     alphabet: ILSystemWord
     word: ILSystemWord
     onWordChange: (word: ILSystemWord) => void
 }
 
 const WordInspector = ({
+    id,
     alphabet,
     word,
     onWordChange,
 }: IWordInspectorProps) => {
     return <input
+        id={ id }
         value={ word.join("") }
         onChange={e => {
             onWordChange(e.target.value

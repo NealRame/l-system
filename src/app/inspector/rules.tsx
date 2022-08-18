@@ -21,9 +21,11 @@ const Rule = ({
     word,
     onChange,
 }: IRuleProps) => {
+    const className = "l-system--rules-inspector-rule"
     return <div className="l-system--rules-inspector-rule">
-        <span className="l-system--rules-inspector-rule-symbol">{ symbol }</span>
+        <label htmlFor={ `${className}--${symbol}` }>{ symbol }</label>
         <WordInspector
+            id={ `${className}--${symbol}` }
             alphabet={ alphabet }
             word={ word }
             onWordChange={ onChange }

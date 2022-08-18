@@ -19,9 +19,12 @@ const AxiomInspector = ({
 }: IAxiomInspectorProps) => {
     return <section id="l-system--axiom-inspector">
         <header>
-            <h2>Axiom</h2>
+            <label htmlFor="l-system--axiom-inspector-input">
+                <h2>Axiom</h2>
+            </label>
         </header>
         <WordInspector
+            id="l-system--axiom-inspector-input"
             alphabet={ alphabet }
             word={ axiom }
             onWordChange={ onAxiomChange }

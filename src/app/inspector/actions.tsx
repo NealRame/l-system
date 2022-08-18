@@ -48,7 +48,7 @@ const Action = ({
     }
 
     return <div className="l-system--actions-inspector-action">
-        <span className="l-system--actions-inspector-action-symbol">{ symbol }</span>
+        <label>{ symbol }</label>
         <select
             ref={ actionTypeEl }
             value={ actionType }
