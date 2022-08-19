@@ -39,6 +39,8 @@ input, select {
 label {
     font-size: smaller;
     font-weight: bold;
+
+    text-transform: capitalize;
 }
 
 #app {
@@ -139,14 +141,12 @@ label {
     gap: 0.25rem;
 }
 
-.l-system--actions-inspector-action-symbol {
-    font-size: smaller;
-    font-weight: bold;
-}
 
-#l-system--step-inspector > header {
+#l-system--generator-inspector > main {
     display: grid;
-    grid-template-columns: 1fr 6ch;
+    grid-template-columns: min-content 1fr;
+    align-items: center;
+    gap: 0.25rem;
 
     align-items: center;
 }
@@ -156,6 +156,5 @@ label {
     grid-template-columns: 1fr 6ch;
     align-items: center;
     gap: 0.25rem;
-    text-transform: capitalize;
 }
 

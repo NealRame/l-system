@@ -7,10 +7,9 @@ import {
 } from "../../lib"
 
 import AlphabetInspector from "./alphabet"
-import AxiomInspector from "./axiom"
 import RulesInspector from "./rules"
 import ActionsInspector from "./actions"
-import StepsInspector from "./steps"
+import GeneratorInspector from "./generator"
 import ColorsInpector from "./colors"
 
 type InspectorProps = {
@@ -52,10 +51,24 @@ const Inspector = ({
         id="l-system-inspector"
     >
         <AlphabetInspector onAlphabetChange={ setAlphabet } />
-        <AxiomInspector alphabet={ alphabet } axiom={ axiom } onAxiomChange={ onAxiomChange } />
-        <RulesInspector alphabet={ alphabet } rules={ rules } onRulesChange={ onRulesChange } />
-        <ActionsInspector alphabet={ alphabet } actions={ actions } onActionsChange={ onActionsChange } />
-        <StepsInspector steps={ step } max={ 16 } onStepsChange={ onStepChange } />
+        <RulesInspector
+            alphabet={ alphabet }
+            rules={ rules }
+            onRulesChange={ onRulesChange }
+        />
+        <ActionsInspector
+            alphabet={ alphabet }
+            actions={ actions }
+            onActionsChange={ onActionsChange }
+        />
+        <GeneratorInspector
+            alphabet={ alphabet }
+            axiom={ axiom }
+            onAxiomChange={ onAxiomChange }
+            steps={ step }
+            maxSteps={ 16 }
+            onStepsChange={ onStepChange }
+        />
         <ColorsInpector
             background={ backgroundColor }
             onBackgroundChange={ onBackgroundColorChange }
