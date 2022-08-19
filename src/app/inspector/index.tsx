@@ -47,7 +47,6 @@ const Inspector = ({
     strokeColor, onStrokeColorChange,
     strokeThickness, onStrokeThicknessChange,
     padding, onPaddingChange,
-
 }: InspectorProps) => {
     const [alphabet, setAlphabet] = React.useState<ILSystemWord>([
         ...new Set(Object.keys(rules))
