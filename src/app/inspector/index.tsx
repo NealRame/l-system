@@ -10,7 +10,7 @@ import AlphabetInspector from "./alphabet"
 import RulesInspector from "./rules"
 import ActionsInspector from "./actions"
 import GeneratorInspector from "./generator"
-import ColorsInpector from "./colors"
+import RenderingOptionsInpector from "./rendering-options"
 
 type InspectorProps = {
     axiom: ILSystemWord,
@@ -28,8 +28,14 @@ type InspectorProps = {
     backgroundColor: string
     onBackgroundColorChange: (backgroundColor: string) => void
 
-    color: string,
-    onColorChange: (color: string) => void
+    strokeColor: string,
+    onStrokeColorChange: (color: string) => void
+
+    strokeThickness: number,
+    onStrokeThicknessChange: (thickness: number) => void
+
+    padding: number,
+    onPaddingChange: (padding: number) => void
 }
 
 const Inspector = ({
@@ -38,7 +44,10 @@ const Inspector = ({
     actions, onActionsChange,
     step, onStepChange,
     backgroundColor, onBackgroundColorChange,
-    color, onColorChange,
+    strokeColor, onStrokeColorChange,
+    strokeThickness, onStrokeThicknessChange,
+    padding, onPaddingChange,
+
 }: InspectorProps) => {
     const [alphabet, setAlphabet] = React.useState<ILSystemWord>([
         ...new Set(Object.keys(rules))
@@ -69,11 +78,15 @@ const Inspector = ({
             maxSteps={ 16 }
             onStepsChange={ onStepChange }
         />
-        <ColorsInpector
-            background={ backgroundColor }
-            onBackgroundChange={ onBackgroundColorChange }
-            stroke={ color }
-            onStrokeChange={ onColorChange }
+        <RenderingOptionsInpector
+            backgroundColor={ backgroundColor }
+            onBackgroundColorChange={ onBackgroundColorChange }
+            strokeColor={ strokeColor }
+            onStrokeColorChange={ onStrokeColorChange }
+            strokeThickness={ strokeThickness }
+            onStrokeThicknessChange={ onStrokeThicknessChange }
+            padding={ padding }
+            onPaddingChange={ onPaddingChange }
         />
     </form>
 }

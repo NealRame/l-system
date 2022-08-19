@@ -15,13 +15,16 @@ const app = () => {
     const [actions, setActions] = React.useState<Partial<ILSystemTurtleActions>>({})
     const [step, setStep] = React.useState<number>(0)
     const [backgroundColor, setBackgroundColor] = React.useState<string>("#212121")
-    const [color, setColor] = React.useState<string>("#ffffff")
+    const [strokeColor, setStrokeColor] = React.useState<string>("#ffffff")
+    const [strokeThickness, setStrokeThickness] = React.useState<number>(0.1)
+    const [padding, setPadding] = React.useState<number>(8)
 
     return <>
         <SVGLSystem
             backgroundColor={ backgroundColor }
-            color={ color }
-            padding={ 8 }
+            strokeColor={ strokeColor }
+            strokeThickness={ strokeThickness }
+            padding={ padding }
             axiom={ axiom as ILSystemWord }
             rules={ rules as ILSystemRules }
             actions={ actions as ILSystemTurtleActions }
@@ -31,8 +34,11 @@ const app = () => {
             backgroundColor={ backgroundColor }
             onBackgroundColorChange={ setBackgroundColor }
 
-            color={ color }
-            onColorChange={ setColor }
+            strokeColor={ strokeColor }
+            onStrokeColorChange={ setStrokeColor }
+
+            strokeThickness={ strokeThickness }
+            onStrokeThicknessChange={ setStrokeThickness }
 
             axiom={ axiom }
             onAxiomChange={ setAxiom }
@@ -45,6 +51,9 @@ const app = () => {
 
             step={ step }
             onStepChange={ setStep }
+
+            padding={ padding }
+            onPaddingChange={ setPadding }
         />
     </>
 }

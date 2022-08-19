@@ -22,8 +22,10 @@ interface ISVGLSystemProps<Alphabet extends ILSystemSymbols> {
     actions: ILSystemTurtleActions<Alphabet>
     steps: number
     backgroundColor?: string
-    color?: string
+    strokeColor?: string
+    strokeThickness?: number
     padding?: number
+    thickness?: number
 }
 
 export function SVGLSystem<Alphabet extends ILSystemSymbols>(
@@ -31,15 +33,18 @@ export function SVGLSystem<Alphabet extends ILSystemSymbols>(
 ) {
     const {
         backgroundColor,
-        color,
+        strokeColor,
+        strokeThickness,
         axiom,
         rules,
         actions,
         steps,
         padding,
+        thickness,
     } = {
         backgroundColor: "white",
-        color: "black",
+        strokeColor: "black",
+        strokeThickness: 0.1,
         padding: 0,
         ...props
     }
@@ -78,8 +83,8 @@ export function SVGLSystem<Alphabet extends ILSystemSymbols>(
     ><g transform={`translate(${padding/2} ${padding/2})`}><path
         d={ path }
         fill="none"
-        stroke={ color }
-        strokeWidth=".1"
+        stroke={ strokeColor }
+        strokeWidth={ strokeThickness }
         strokeLinecap="round"
     /></g></svg>
 }
