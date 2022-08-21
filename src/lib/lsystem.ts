@@ -1,26 +1,9 @@
 import type {
-    ITurtleAction,
+    ILSystemSymbols,
+    ILSystemWord,
+    ILSystemRules,
+    ILSystemTurtleActions,
 } from "./types"
-
-export const Symbols = [
-    "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "-", "+", "[", "]"
-] as const
-
-export type ILSystemSymbols
-    = typeof Symbols[number]
-
-export type ILSystemWord<Alphabet extends ILSystemSymbols = ILSystemSymbols>
-    = Array<Alphabet>
-
-export type ILSystemRules<Alphabet extends ILSystemSymbols = ILSystemSymbols>
-    = {
-    [key in Alphabet]: ILSystemWord<Alphabet>
-}
-
-export type ILSystemTurtleActions<Alphabet extends ILSystemSymbols = ILSystemSymbols>
-    = {
-    [key in Alphabet]: ITurtleAction
-}
 
 export class LSystem<Alphabet extends ILSystemSymbols> {
     private apply_(symbol: Alphabet)
