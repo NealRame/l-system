@@ -1,19 +1,19 @@
 import * as React from "react"
 
 import {
-    LSystem,
-    type ILSystemSymbols,
-    type ILSystemTurtleActions,
-    type ILSystemRules,
-    type ILSystemWord,
-} from "./lsystem"
+    LSystem
+} from "./l-system"
 
 import {
     SVGTurtle,
 } from "./svg-turtle"
 
-import {
-    type IRect,
+import type {
+    IRect,
+    ILSystemSymbols,
+    ILSystemTurtleActions,
+    ILSystemRules,
+    ILSystemWord,
 } from "./types"
 
 interface ISVGLSystemProps<Alphabet extends ILSystemSymbols> {
