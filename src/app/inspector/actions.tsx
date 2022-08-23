@@ -3,10 +3,21 @@ import * as React from "react"
 import {
     type ILSystemSymbols,
     type ILSystemTurtleActions,
-    type ILSystemWord,
     type ITurtleAction,
     type ITurtle
 } from "../../lib"
+
+import {
+    useAppDispatch,
+    useAppSelector,
+} from "../hooks"
+
+import {
+    selectAlphabet,
+    selectActions,
+    setActions,
+    updateActions,
+} from "../slices"
 
 interface IActionProps {
     symbol: ILSystemSymbols,
@@ -83,34 +94,38 @@ const Action = ({
     </div>
 }
 
-interface IActionInspectorProps {
-    alphabet: ILSystemWord
-    actions: Partial<ILSystemTurtleActions>
-    onActionsChange: (actions: Partial<ILSystemTurtleActions>) => void
-}
 
-const ActionsInspector = ({
-    alphabet,
-    actions,
-    onActionsChange,
-}: IActionInspectorProps) => {
-    const actionChangeHandler = (symbol: ILSystemSymbols) => (action: ITurtleAction) => {
-        onActionsChange({
-            ...actions,
-            [symbol]: action
-        })
-    }
+const ActionsInspector = () => {
+    const alphabet = useAppSelector(selectAlphabet)
+    const actions = useAppSelector(selectActions)
+
+    const dispatch = useAppDispatch()
+
+    React.useEffect(() => {
+        const initial = Object.assign({}, ...alphabet.map(symbol => {
+            return {
+                [symbol]: actions[symbol] ?? ["noop"],
+            } as Partial<ILSystemTurtleActions>
+        }))
+        dispatch(setActions(initial))
+    }, [alphabet])
+
     return <section id="l-system--actions-inspector">
         <header>
             <h2>Actions</h2>
         </header>
         <ul>
-            { alphabet.map(symbol => (<li key={ symbol }>
-                <Action
-                    symbol={ symbol }
-                    action={ actions[symbol] ?? ["noop"] }
-                    onActionChange={ actionChangeHandler(symbol) } />
-            </li>))}
+            { Object.entries(actions).map(([symbol, action]) => {
+                return <li key={ symbol }>
+                    <Action
+                        symbol={ symbol as ILSystemSymbols }
+                        action={ action }
+                        onActionChange={ action => {
+                            dispatch(updateActions({ [symbol]: action }))
+                        } }
+                    />
+                </li>
+            }) }
         </ul>
     </section>
 }

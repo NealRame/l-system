@@ -1,20 +1,19 @@
 import * as React from "react"
 
-interface IRenderingOptionsInspectorProps {
-    backgroundColor: string
-    onBackgroundColorChange: (color: string) => void
+import {
+    useAppSelector,
+    useAppDispatch,
+} from "../hooks"
 
-    strokeColor: string
-    onStrokeColorChange: (color: string) => void
+import {
+    selectRenderingOptions,
+    updateRenderingOptions,
+} from "../slices"
 
-    strokeThickness: number
-    onStrokeThicknessChange: (thickness: number) => void
+const RenderingOptionsInspector = () => {
+    const renderingOptions = useAppSelector(selectRenderingOptions)
+    const dispatch = useAppDispatch()
 
-    padding: number
-    onPaddingChange: (padding: number) => void
-}
-
-const RenderingOptionsInspector = (props: IRenderingOptionsInspectorProps) => {
     const id = "l-system--colors-inspector"
     const labels = {
         backgroundColor: "background color",
@@ -23,10 +22,26 @@ const RenderingOptionsInspector = (props: IRenderingOptionsInspectorProps) => {
         padding: "padding",
     }
     const callbacks = {
-        backgroundColor: props.onBackgroundColorChange,
-        strokeColor: props.onStrokeColorChange,
-        strokeThickness: props.onStrokeThicknessChange,
-        padding: props.onPaddingChange,
+        backgroundColor: (color: string) => {
+            dispatch(updateRenderingOptions({
+                backgroundColor: color,
+            }))
+        },
+        strokeColor: (color: string) => {
+            dispatch(updateRenderingOptions({
+                strokeColor: color,
+            }))
+        },
+        strokeThickness: (thickness: number) => {
+            dispatch(updateRenderingOptions({
+                strokeThickness: thickness,
+            }))
+        },
+        padding: (padding: number) => {
+            dispatch(updateRenderingOptions({
+                padding,
+            }))
+        },
     }
     return <section id={ id }>
         <header>
@@ -40,7 +55,7 @@ const RenderingOptionsInspector = (props: IRenderingOptionsInspectorProps) => {
                     <input
                         id={ colorId }
                         type="color"
-                        value={ props[type] }
+                        value={ renderingOptions[type] }
                         onChange={ e => {
                             callbacks[type](e.target.value)
                         } }
@@ -54,7 +69,7 @@ const RenderingOptionsInspector = (props: IRenderingOptionsInspectorProps) => {
                 min={ 0.1 }
                 max={ 10 }
                 step={ 0.1 }
-                value={ props.strokeThickness }
+                value={ renderingOptions.strokeThickness }
                 onChange={ e => {
                     callbacks.strokeThickness(parseFloat(e.target.value))
                 } }
@@ -64,7 +79,7 @@ const RenderingOptionsInspector = (props: IRenderingOptionsInspectorProps) => {
                 id={ `${id}--padding` }
                 type="number"
                 min={ 0 }
-                value={ props.padding }
+                value={ renderingOptions.padding }
                 onChange={ e => {
                     callbacks.padding(parseFloat(e.target.value))
                 } }

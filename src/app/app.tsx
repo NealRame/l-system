@@ -8,16 +8,30 @@ import {
 } from "../lib"
 
 import Inspector from "./inspector"
+import { useAppSelector } from "./hooks"
+import {
+    selectRules,
+    selectGeneratorOptions,
+    selectActions,
+    selectRenderingOptions,
+} from "./slices"
 
 const app = () => {
-    const [axiom, setAxiom] = React.useState<ILSystemWord>([])
-    const [rules, setRules] = React.useState<Partial<ILSystemRules>>({})
-    const [actions, setActions] = React.useState<Partial<ILSystemTurtleActions>>({})
-    const [step, setStep] = React.useState<number>(0)
-    const [backgroundColor, setBackgroundColor] = React.useState<string>("#212121")
-    const [strokeColor, setStrokeColor] = React.useState<string>("#ffffff")
-    const [strokeThickness, setStrokeThickness] = React.useState<number>(0.1)
-    const [padding, setPadding] = React.useState<number>(8)
+    const rules = useAppSelector(selectRules)
+
+    const {
+        axiom,
+        steps,
+    } = useAppSelector(selectGeneratorOptions)
+
+    const actions = useAppSelector(selectActions)
+
+    const {
+        backgroundColor,
+        strokeColor,
+        strokeThickness,
+        padding,
+    } = useAppSelector(selectRenderingOptions)
 
     return <>
         <SVGLSystem
@@ -28,33 +42,9 @@ const app = () => {
             axiom={ axiom as ILSystemWord }
             rules={ rules as ILSystemRules }
             actions={ actions as ILSystemTurtleActions }
-            steps={ step }
+            steps={ steps }
         />
-        <Inspector
-            backgroundColor={ backgroundColor }
-            onBackgroundColorChange={ setBackgroundColor }
-
-            strokeColor={ strokeColor }
-            onStrokeColorChange={ setStrokeColor }
-
-            strokeThickness={ strokeThickness }
-            onStrokeThicknessChange={ setStrokeThickness }
-
-            axiom={ axiom }
-            onAxiomChange={ setAxiom }
-
-            rules={ rules }
-            onRulesChange={ setRules }
-
-            actions={ actions }
-            onActionsChange={ setActions}
-
-            step={ step }
-            onStepChange={ setStep }
-
-            padding={ padding }
-            onPaddingChange={ setPadding }
-        />
+        <Inspector />
     </>
 }
 

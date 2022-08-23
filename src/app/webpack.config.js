@@ -9,7 +9,7 @@ module.exports = {
     devServer: {
         static: outputDirectory,
     },
-    entry: "./src/app/index.ts",
+    entry: "./src/app/index.tsx",
     output: {
         clean: true,
         filename: "bundle.js",

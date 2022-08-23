@@ -1,12 +1,24 @@
 import * as React from "react"
 
-import {
-    type ILSystemRules,
-    type ILSystemSymbols,
-    type ILSystemWord,
+import type {
+    ILSystemRules,
+    ILSystemSymbols,
+    ILSystemWord,
 } from "../../lib"
 
+import {
+    useAppSelector,
+    useAppDispatch
+} from "../hooks"
+
 import WordInspector from "./word"
+
+import {
+    selectAlphabet,
+    selectRules,
+    updateRules,
+    setRules,
+} from "../slices"
 
 interface IRuleProps {
     alphabet: ILSystemWord
@@ -33,23 +45,21 @@ const Rule = ({
     </div>
 }
 
-interface IRulesInspectorProps {
-    alphabet: ILSystemWord
-    rules: Partial<ILSystemRules>
-    onRulesChange: (rules: Partial<ILSystemRules>) => void
-}
+const RulesInspector = () => {
+    const alphabet = useAppSelector(selectAlphabet)
 
-const RulesInspector = ({
-    alphabet,
-    rules,
-    onRulesChange,
-}: IRulesInspectorProps) => {
-    const ruleChangeHandler = (symbol: ILSystemSymbols) => (word: ILSystemWord) => {
-        onRulesChange({
-            ...rules,
-            [symbol]: word
-        })
-    }
+    const rules = useAppSelector(selectRules)
+    const dispatch = useAppDispatch()
+
+    React.useEffect(() => {
+        const initial = Object.assign({}, alphabet.map(symbol => {
+            return {
+                [symbol]: rules[symbol] ?? [symbol],
+            } as Partial<ILSystemRules>
+        }))
+        dispatch(setRules(initial))
+    }, [alphabet])
+
     return <section id="l-system--rules-inspector">
         <header>
             <h2>Rules</h2>
@@ -60,7 +70,9 @@ const RulesInspector = ({
                     alphabet={ alphabet }
                     symbol={ symbol }
                     word={ rules[symbol] ?? [symbol] }
-                    onChange={ ruleChangeHandler(symbol) }
+                    onChange={ word => dispatch(updateRules({
+                        [symbol]: word,
+                    })) }
                 />
             </li>))}
         </ul>

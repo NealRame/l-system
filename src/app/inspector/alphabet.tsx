@@ -2,30 +2,23 @@ import * as React from "react"
 
 import {
     Symbols,
-    type ILSystemSymbols,
-    type ILSystemWord,
 } from "../../lib"
+
+import {
+    useAppSelector,
+    useAppDispatch
+} from "../hooks"
+
+import {
+    selectAlphabet,
+    toggleSymbol,
+} from "../slices"
 
 import SymbolButton from "./symbol-button"
 
-interface IAlphabetInspectorProps {
-    onAlphabetChange: (alphabet: ILSystemWord) => void
-}
-
-const AlphabetInspector = (props: IAlphabetInspectorProps) => {
-    const [alphabet, setAlphabet] = React.useState<ILSystemWord>([])
-
-    const symbolClickHandler = (symbol: ILSystemSymbols) => () => {
-        if (alphabet.includes(symbol)) {
-            const newAlphabet = alphabet.filter(s => s !== symbol)
-            setAlphabet(newAlphabet)
-            props.onAlphabetChange(newAlphabet)
-        } else {
-            const newAlphabet = [...alphabet, symbol]
-            setAlphabet(newAlphabet)
-            props.onAlphabetChange(newAlphabet)
-        }
-    }
+const AlphabetInspector = () => {
+    const alphabet = useAppSelector(selectAlphabet)
+    const dispatch = useAppDispatch()
 
     return <>
         <section id="l-system--alphabet-inspector">
@@ -33,12 +26,14 @@ const AlphabetInspector = (props: IAlphabetInspectorProps) => {
             <h2>Alphabet</h2>
             </header>
             <ul>
-                { Symbols.map(symbol => (<li key={ symbol }>
-                    <SymbolButton
-                        onClick={ symbolClickHandler(symbol) }
-                        selected={ alphabet.includes(symbol) }
-                    >{ symbol }</SymbolButton>
-                </li>)) }
+                { Symbols.map(symbol => {
+                    return <li key={ symbol }>
+                        <SymbolButton
+                            onClick={ () => dispatch(toggleSymbol(symbol)) }
+                            selected={ alphabet.includes(symbol) }
+                        >{ symbol }</SymbolButton>
+                    </li>
+                }) }
             </ul>
         </section>
     </>
