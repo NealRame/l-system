@@ -2,17 +2,17 @@ import * as React from "react"
 
 import {
     Symbols,
-} from "../../lib"
+} from "../../../lib"
 
 import {
     useAppSelector,
     useAppDispatch
-} from "../hooks"
+} from "../../hooks"
 
 import {
     selectAlphabet,
     toggleSymbol,
-} from "../slices"
+} from "../../slices"
 
 import SymbolButton from "./symbol-button"
 

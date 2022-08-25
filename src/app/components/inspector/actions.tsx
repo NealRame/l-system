@@ -5,19 +5,19 @@ import {
     type ILSystemTurtleActions,
     type ITurtleAction,
     type ITurtle
-} from "../../lib"
+} from "../../../lib"
 
 import {
     useAppDispatch,
     useAppSelector,
-} from "../hooks"
+} from "../../hooks"
 
 import {
     selectAlphabet,
     selectActions,
     setActions,
     updateActions,
-} from "../slices"
+} from "../../slices"
 
 interface IActionProps {
     symbol: ILSystemSymbols,

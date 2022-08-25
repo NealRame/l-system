@@ -4,21 +4,21 @@ import type {
     ILSystemRules,
     ILSystemSymbols,
     ILSystemWord,
-} from "../../lib"
+} from "../../../lib"
 
 import {
     useAppSelector,
     useAppDispatch
-} from "../hooks"
-
-import WordInspector from "./word"
+} from "../../hooks"
 
 import {
     selectAlphabet,
     selectRules,
     updateRules,
     setRules,
-} from "../slices"
+} from "../../slices"
+
+import WordInspector from "./word"
 
 interface IRuleProps {
     alphabet: ILSystemWord

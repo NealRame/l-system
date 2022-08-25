@@ -8,8 +8,10 @@ import {
     Provider
 } from "react-redux"
 
-import App from "./app"
+import App from "./components/app"
+
 import store from "./store"
+
 import "./style.css"
 
 createRoot(document.getElementById("app"))

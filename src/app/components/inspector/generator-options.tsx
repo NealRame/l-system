@@ -1,19 +1,15 @@
 import * as React from "react"
 
 import {
-    type ILSystemWord,
-} from "../../lib"
-
-import {
     useAppDispatch,
     useAppSelector,
-} from "../hooks"
+} from "../../hooks"
 
 import {
     selectAlphabet,
     updateGeneratorOptions,
     selectGeneratorOptions,
-} from "../slices"
+} from "../../slices"
 
 import WordInspector from "./word"
 

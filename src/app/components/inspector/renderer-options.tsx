@@ -3,12 +3,12 @@ import * as React from "react"
 import {
     useAppSelector,
     useAppDispatch,
-} from "../hooks"
+} from "../../hooks"
 
 import {
     selectRenderingOptions,
     updateRenderingOptions,
-} from "../slices"
+} from "../../slices"
 
 const RenderingOptionsInspector = () => {
     const renderingOptions = useAppSelector(selectRenderingOptions)

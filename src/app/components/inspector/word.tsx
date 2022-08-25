@@ -3,7 +3,7 @@ import * as React from "react"
 import {
     type ILSystemSymbols,
     type ILSystemWord,
-} from "../../lib"
+} from "../../../lib"
 
 interface IWordInspectorProps {
     id: string

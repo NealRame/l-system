@@ -5,16 +5,17 @@ import {
     type ILSystemRules,
     type ILSystemTurtleActions,
     type ILSystemWord,
-} from "../lib"
+} from "../../lib"
 
-import Inspector from "./inspector"
-import { useAppSelector } from "./hooks"
+import { useAppSelector } from "../hooks"
 import {
     selectRules,
     selectGeneratorOptions,
     selectActions,
     selectRenderingOptions,
-} from "./slices"
+} from "../slices"
+
+import Inspector from "./inspector"
 
 const app = () => {
     const rules = useAppSelector(selectRules)
