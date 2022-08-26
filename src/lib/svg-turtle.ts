@@ -14,7 +14,7 @@ export class SVGTurtle implements ITurtle {
     private yMax_ = 0
     private yMin_ = 0
 
-    private cap_ = 0
+    private course_ = 0
 
     private d_: string
 
@@ -27,11 +27,11 @@ export class SVGTurtle implements ITurtle {
     }
 
     turn(angle: number): void {
-        this.cap_ -= angle
+        this.course_ -= angle
     }
 
     push(): void {
-        this.states_.push(this.x_, this.y_, this.cap_)
+        this.states_.push(this.x_, this.y_, this.course_)
     }
 
     pop(): void {
@@ -39,7 +39,7 @@ export class SVGTurtle implements ITurtle {
             throw new Error("Stack is empty")
         }
 
-        this.cap_ = this.states_.pop()!
+        this.course_ = this.states_.pop()!
         this.y_ = this.states_.pop()!
         this.x_ = this.states_.pop()!
 
@@ -47,8 +47,8 @@ export class SVGTurtle implements ITurtle {
     }
 
     forward(len: number): void {
-        this.x_ = this.x_ + len*Math.cos(this.cap_)
-        this.y_ = this.y_ + len*Math.sin(this.cap_)
+        this.x_ = this.x_ + len*Math.cos(this.course_)
+        this.y_ = this.y_ + len*Math.sin(this.course_)
 
         this.xMin_ = Math.min(this.xMin_, this.x_)
         this.xMax_ = Math.max(this.xMax_, this.x_)
