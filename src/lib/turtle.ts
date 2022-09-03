@@ -3,7 +3,7 @@ import type {
     IRect,
 } from "./types"
 
-export class SVGTurtle implements ITurtle {
+export class Turtle implements ITurtle {
     private states_: Array<number> = []
 
     private x_ = 0

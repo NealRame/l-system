@@ -1,7 +1,6 @@
 import * as React from "react"
 
 import {
-    SVGLSystem,
     type ILSystemRules,
     type ILSystemTurtleActions,
     type ILSystemWord,
@@ -16,6 +15,7 @@ import {
 } from "../slices"
 
 import Inspector from "./inspector"
+import SVGLSystem from "./svg"
 
 const app = () => {
     const rules = useAppSelector(selectRules)

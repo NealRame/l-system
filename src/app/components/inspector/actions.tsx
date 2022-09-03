@@ -36,7 +36,7 @@ const Action = ({
     const actionValuesEl = React.useRef<HTMLInputElement>(null)
 
     const updateRule = () => {
-        const type = actionTypeEl.current?.value as keyof ITurtle
+        const type = actionTypeEl.current?.value as ITurtleAction[0]
         if (type === "turn") {
             const arg = Number(actionValuesEl.current?.value ?? 90)*Math.PI/180
             if (Number.isNaN(arg)) {
