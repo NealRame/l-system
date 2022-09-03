@@ -20,7 +20,7 @@ import type {
 export function useLSystem(
     rules: Partial<ILSystemRules>,
     actions: Partial<ILSystemTurtleActions>,
-    axiom: Partial<ILSystemWord>,
+    axiom: ILSystemWord,
     steps: number,
 ) {
     const [path, setPath] = React.useState("")
