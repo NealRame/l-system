@@ -39,3 +39,8 @@ export function defineLSystemRules<Alphabet extends ILSystemSymbols>(
 export function defineLSystemTurtleActions<Alphabet extends ILSystemSymbols>(
     actions: ILSystemTurtleActions<Alphabet>
 ): ILSystemTurtleActions<Alphabet> { return actions }
+
+
+export function defineLSystemAxiom<Alphabet extends ILSystemSymbols>(
+    axiom: ILSystemWord<Alphabet>
+): ILSystemWord<Alphabet> { return axiom }
