@@ -13,4 +13,4 @@ rm -rf "$BUILD_OUTPUT_DIR"
 
 tsc \
     --outDir "$BUILD_OUTPUT_DIR" \
-    --project "$SOURCE_DIR/src/lib/react-clock"
+    --project "$SOURCE_DIR/src/lib"
