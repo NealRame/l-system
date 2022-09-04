@@ -1,5 +1,12 @@
 # L-System
 
+An implementation of Lindenmayer Systems for your React application.
+
+## Installation
+```sh
+> npm install @nealrame/react-l-system
+```
+
 ## Example
 
 ```js
