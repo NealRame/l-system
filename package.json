@@ -1,7 +1,7 @@
 {
-  "name": "l-system",
+  "name": "react-l-system",
   "version": "0.0.1",
-  "description": "L-System implementation in Typescript",
+  "description": "L-System for your React application.",
   "main": "index.js",
   "scripts": {
     "build": "./scripts/build.sh",
@@ -12,6 +12,7 @@
   "keywords": [
     "l-system",
     "canvas",
+    "react",
     "svg"
   ],
   "author": "Julien Graziano",
