@@ -158,3 +158,8 @@ label {
     gap: 0.25rem;
 }
 
+
+#l-system-renderer {
+    width: 100%;
+    height: 100%;
+}
