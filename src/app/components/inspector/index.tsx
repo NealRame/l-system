@@ -9,10 +9,7 @@ import RenderingOptionsInpector from "./renderer-options"
 
 const Inspector = () => {
     const [ active, setActive ] = React.useState(false)
-    const onClick = () => {
-        setActive(!active)
-        console.log(active)
-    }
+    const onClick = () => setActive(!active)
     return <form
         autoComplete="off"
         autoCorrect="off"
