@@ -36,7 +36,7 @@ const app = () => {
     } = useAppSelector(selectRenderingOptions)
 
     return <>
-        <SVGLSystem
+        <CanvasLSystem
             backgroundColor={ backgroundColor }
             strokeColor={ strokeColor }
             strokeThickness={ strokeThickness }
