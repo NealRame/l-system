@@ -34,7 +34,7 @@ function SVGLSystem<Alphabet extends ILSystemSymbols>(
     } = {
         backgroundColor: "white",
         strokeColor: "black",
-        strokeThickness: 0.1,
+        strokeThickness: 1,
         padding: 0,
         ...props
     }
@@ -42,8 +42,7 @@ function SVGLSystem<Alphabet extends ILSystemSymbols>(
     const { path, rect } = useLSystem(rules, actions, axiom, steps)
 
     return <svg
-        width="100%"
-        height="100%"
+        id="l-system-renderer"
         viewBox={`${rect.x} ${rect.y} ${rect.w + padding} ${rect.h + padding}`}
         preserveAspectRatio="xMidYMid meet"
         style={{ backgroundColor }}
@@ -51,8 +50,9 @@ function SVGLSystem<Alphabet extends ILSystemSymbols>(
         d={ path }
         fill="none"
         stroke={ strokeColor }
-        strokeWidth={ strokeThickness }
+        strokeWidth={ `${strokeThickness}px` }
         strokeLinecap="round"
+        vector-effect="non-scaling-stroke"
     /></g></svg>
 }
 

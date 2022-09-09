@@ -174,7 +174,7 @@ const rendererOptionsSlice = createSlice({
     initialState: {
         backgroundColor: "#000000",
         strokeColor: "#ffffff",
-        strokeThickness: 0.1,
+        strokeThickness: 1,
         padding: 8,
     } as RendererOptionsState,
     reducers: {
