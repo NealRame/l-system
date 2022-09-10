@@ -24,12 +24,7 @@ export function useLSystem(
     steps: number,
 ) {
     const [path, setPath] = React.useState("")
-    const [rect, setRect] = React.useState<IRect>({
-        x: 0,
-        y: 0,
-        w: 0,
-        h: 0,
-    })
+    const [rect, setRect] = React.useState<IRect>({ x: 0, y: 0, w: 0, h: 0 })
 
     const actionRunner = (turtle: ITurtle) => {
         return (symbol: ILSystemSymbols) => {
