@@ -1,27 +1,5 @@
 import { Symbols } from "./constants"
 
-export interface IRect {
-    x: number
-    y: number
-    w: number
-    h: number
-}
-
-export interface ITurtle {
-    forward(len: number): void
-    turn(angle: number): void
-    push(): void
-    pop(): void
-    noop(): void
-    readonly path: string
-    readonly rect: IRect
-}
-
-export type ITurtleAction
-    = {
-    [K in keyof ITurtle]: ITurtle[K] extends (...args: any[]) => void ? [K,...Parameters<ITurtle[K]>] : never
-}[keyof ITurtle]
-
 export type ILSystemSymbols
     = typeof Symbols[number]
 
@@ -33,7 +11,20 @@ export type ILSystemProductionRules<Alphabet extends ILSystemSymbols = ILSystemS
     [key in Alphabet]: ILSystemWord<Alphabet>
 }
 
-export type ILSystemTurtleActions<Alphabet extends ILSystemSymbols = ILSystemSymbols>
+export interface ILSystemRenderDevice {
+    forward(len: number): void
+    turn(angle: number): void
+    push(): void
+    pop(): void
+    noop(): void
+}
+
+export type ILSystemRenderAction
     = {
-    [key in Alphabet]: ITurtleAction
+    [K in keyof ILSystemRenderDevice]: [K,...Parameters<ILSystemRenderDevice[K]>]
+}[keyof ILSystemRenderDevice]
+
+export type ILSystemRenderActionMap<Alphabet extends ILSystemSymbols = ILSystemSymbols>
+    = {
+    [key in Alphabet]: ILSystemRenderAction
 }

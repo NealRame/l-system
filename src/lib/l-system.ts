@@ -2,7 +2,7 @@ import type {
     ILSystemSymbols,
     ILSystemWord,
     ILSystemProductionRules,
-    ILSystemTurtleActions,
+    ILSystemRenderActionMap,
 } from "./types"
 
 export class LSystem<Alphabet extends ILSystemSymbols> {
@@ -13,10 +13,7 @@ export class LSystem<Alphabet extends ILSystemSymbols> {
 
     private step_(word: ILSystemWord<Alphabet>)
         : ILSystemWord<Alphabet> {
-        return word.reduce(
-            (prev, current) => prev.concat(this.apply_(current)),
-            [] as ILSystemWord<Alphabet>
-        )
+        return word.flatMap(symbol => this.apply_(symbol))
     }
 
     constructor(
@@ -37,8 +34,8 @@ export function defineLSystemRules<Alphabet extends ILSystemSymbols>(
 ): ILSystemProductionRules<Alphabet> { return rules }
 
 export function defineLSystemTurtleActions<Alphabet extends ILSystemSymbols>(
-    actions: ILSystemTurtleActions<Alphabet>
-): ILSystemTurtleActions<Alphabet> { return actions }
+    actions: ILSystemRenderActionMap<Alphabet>
+): ILSystemRenderActionMap<Alphabet> { return actions }
 
 
 export function defineLSystemAxiom<Alphabet extends ILSystemSymbols>(

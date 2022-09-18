@@ -2,7 +2,7 @@ import * as React from "react"
 
 import {
     type ILSystemSymbols,
-    type ILSystemTurtleActions,
+    type ILSystemRenderActionMap,
     type ILSystemProductionRules,
     type ILSystemWord,
     useLSystem,
@@ -11,7 +11,7 @@ import {
 interface ISVGLSystemProps<Alphabet extends ILSystemSymbols> {
     axiom: ILSystemWord<Alphabet>
     rules: ILSystemProductionRules<Alphabet>
-    actions: ILSystemTurtleActions<Alphabet>
+    actions: ILSystemRenderActionMap<Alphabet>
     steps: number
     backgroundColor?: string
     strokeColor?: string

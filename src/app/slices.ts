@@ -6,7 +6,7 @@ import {
 import type {
     ILSystemProductionRules,
     ILSystemSymbols,
-    ILSystemTurtleActions,
+    ILSystemRenderActionMap,
     ILSystemWord,
 } from "../lib"
 
@@ -130,7 +130,7 @@ export const generatorOptionsReducer = generatorOptionsSlice.reducer
  * Actions slice
  *****************************************************************************/
 interface IActionsState {
-    value: Partial<ILSystemTurtleActions>
+    value: Partial<ILSystemRenderActionMap>
 }
 
 const actionsSlice = createSlice({
@@ -139,14 +139,14 @@ const actionsSlice = createSlice({
         value: {},
     } as IActionsState,
     reducers: {
-        updateActions: (state, action: PayloadAction<Partial<ILSystemTurtleActions>>) => {
+        updateActions: (state, action: PayloadAction<Partial<ILSystemRenderActionMap>>) => {
             const { payload: actions } = action
             state.value = {
                 ...state.value,
                 ...actions,
             }
         },
-        setActions: (state, action: PayloadAction<Partial<ILSystemTurtleActions>>) => {
+        setActions: (state, action: PayloadAction<Partial<ILSystemRenderActionMap>>) => {
             const { payload: actions } = action
             state.value = actions
         },

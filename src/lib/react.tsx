@@ -5,46 +5,40 @@ import {
 } from "./l-system"
 
 import {
-    Turtle,
-} from "./turtle"
+    Renderer,
+} from "./renderer"
+
+import {
+    type IRect,
+    Path2DRenderDevice
+} from "./path2d-render-device"
 
 import type {
-    IRect,
-    ILSystemSymbols,
-    ILSystemTurtleActions,
+    ILSystemRenderActionMap,
     ILSystemProductionRules,
     ILSystemWord,
-    ITurtle,
 } from "./types"
 
 export function useLSystem(
     rules: Partial<ILSystemProductionRules>,
-    actions: Partial<ILSystemTurtleActions>,
+    actions: Partial<ILSystemRenderActionMap>,
     axiom: ILSystemWord,
     steps: number,
 ) {
     const [path, setPath] = React.useState("")
     const [rect, setRect] = React.useState<IRect>({ x: 0, y: 0, w: 0, h: 0 })
 
-    const actionRunner = (turtle: ITurtle) => {
-        return (symbol: ILSystemSymbols) => {
-            if (symbol in actions) {
-                const [action, ...args] = actions[symbol]!
-                ;(turtle[action] as Function).call(turtle, ...args)
-            }
-        }
-    }
-
     React.useEffect(() => {
-        const turtle = new Turtle()
         const lsystem = new LSystem(rules as ILSystemProductionRules)
+        const renderer = new Renderer(actions as ILSystemRenderActionMap)
+        const device = new Path2DRenderDevice()
 
-        lsystem
-            .generate(axiom as ILSystemWord, steps)
-            .forEach(actionRunner(turtle))
-
-        setPath(turtle.path)
-        setRect(turtle.rect)
+        renderer.render(
+            lsystem.generate(axiom as ILSystemWord, steps),
+            device,
+        )
+        setPath(device.path)
+        setRect(device.rect)
     }, [rules, actions, axiom, steps])
 
     return { path, rect }

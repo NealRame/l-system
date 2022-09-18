@@ -1,9 +1,15 @@
 import type {
-    ITurtle,
-    IRect,
+    ILSystemRenderDevice,
 } from "./types"
 
-export class Turtle implements ITurtle {
+export interface IRect {
+    x: number
+    y: number
+    w: number
+    h: number
+}
+
+export class Path2DRenderDevice implements ILSystemRenderDevice {
     private states_: Array<number> = []
 
     private x_ = 0

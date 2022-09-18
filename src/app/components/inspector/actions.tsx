@@ -2,9 +2,8 @@ import * as React from "react"
 
 import {
     type ILSystemSymbols,
-    type ILSystemTurtleActions,
-    type ITurtleAction,
-    type ITurtle
+    type ILSystemRenderActionMap,
+    type ILSystemRenderAction,
 } from "../../../lib"
 
 import {
@@ -21,8 +20,8 @@ import {
 
 interface IActionProps {
     symbol: ILSystemSymbols,
-    action: ITurtleAction,
-    onActionChange: (action: ITurtleAction) => void
+    action: ILSystemRenderAction,
+    onActionChange: (action: ILSystemRenderAction) => void
 }
 
 const Action = ({
@@ -36,7 +35,7 @@ const Action = ({
     const actionValuesEl = React.useRef<HTMLInputElement>(null)
 
     const updateRule = () => {
-        const type = actionTypeEl.current?.value as ITurtleAction[0]
+        const type = actionTypeEl.current?.value as ILSystemRenderAction[0]
         if (type === "turn") {
             const arg = Number(actionValuesEl.current?.value ?? 90)*Math.PI/180
             if (Number.isNaN(arg)) {
@@ -105,7 +104,7 @@ const ActionsInspector = () => {
         const initial = Object.assign({}, ...alphabet.map(symbol => {
             return {
                 [symbol]: actions[symbol] ?? ["noop"],
-            } as Partial<ILSystemTurtleActions>
+            } as Partial<ILSystemRenderActionMap>
         }))
         dispatch(setActions(initial))
     }, [alphabet])

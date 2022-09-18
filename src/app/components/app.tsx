@@ -2,7 +2,7 @@ import * as React from "react"
 
 import {
     type ILSystemProductionRules,
-    type ILSystemTurtleActions,
+    type ILSystemRenderActionMap,
     type ILSystemWord,
 } from "../../lib"
 
@@ -43,7 +43,7 @@ const app = () => {
             padding={ padding }
             axiom={ axiom as ILSystemWord }
             rules={ rules as ILSystemProductionRules }
-            actions={ actions as ILSystemTurtleActions }
+            actions={ actions as ILSystemRenderActionMap }
             steps={ steps }
         />
         <Inspector />
