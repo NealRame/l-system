@@ -1,8 +1,8 @@
 import * as React from "react"
 
 import {
-    LSystem
-} from "./l-system"
+    Generator
+} from "./generator"
 
 import {
     type IRect,
@@ -26,12 +26,12 @@ export function useLSystem(
     const [rect, setRect] = React.useState<IRect>({ x: 0, y: 0, w: 0, h: 0 })
 
     React.useEffect(() => {
-        const lsystem = new LSystem(rules)
+        const generator = new Generator(rules)
         const renderer = new Renderer(actions)
         const device = new Path2DRenderDevice()
 
         renderer.render(
-            lsystem.generate(axiom as ILSystemWord, steps),
+            generator.generate(axiom as ILSystemWord, steps),
             device,
         )
         setPath(device.path)

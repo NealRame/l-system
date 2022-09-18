@@ -5,7 +5,7 @@ import type {
     ILSystemRenderingRulesMap,
 } from "./types"
 
-export class LSystem<Alphabet extends ILSystemSymbols> {
+export class Generator<Alphabet extends ILSystemSymbols> {
     private apply_(symbol: Alphabet)
         : ILSystemWord<Alphabet> {
         return this.rules_[symbol] ?? [symbol]
