@@ -1,5 +1,5 @@
 export * from "./constants"
 export * from "./generator"
 export * from "./react"
-export * from "./types"
 export * from "./renderer"
+export * from "./types"
