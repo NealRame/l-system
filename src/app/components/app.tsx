@@ -42,9 +42,9 @@ const app = () => {
             strokeThickness={ strokeThickness }
             padding={ padding }
             axiom={ axiom as ILSystemWord }
-            rules={ rules as ILSystemProductionRulesMap }
-            actions={ actions as ILSystemRenderingRulesMap }
+            productionRules={ rules as ILSystemProductionRulesMap }
             steps={ steps }
+            renderingRules={ actions as ILSystemRenderingRulesMap }
         />
         <Inspector />
     </>

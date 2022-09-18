@@ -10,8 +10,8 @@ import {
 
 interface ISVGLSystemProps<Alphabet extends ILSystemSymbols> {
     axiom: ILSystemWord<Alphabet>
-    rules: ILSystemProductionRulesMap<Alphabet>
-    actions: ILSystemRenderingRulesMap<Alphabet>
+    productionRules: ILSystemProductionRulesMap<Alphabet>
+    renderingRules: ILSystemRenderingRulesMap<Alphabet>
     steps: number
     backgroundColor?: string
     strokeColor?: string
@@ -27,8 +27,8 @@ function SVGLSystem<Alphabet extends ILSystemSymbols>(
         strokeColor,
         strokeThickness,
         axiom,
-        rules,
-        actions,
+        productionRules,
+        renderingRules,
         steps,
         padding,
     } = {
@@ -39,7 +39,12 @@ function SVGLSystem<Alphabet extends ILSystemSymbols>(
         ...props
     }
 
-    const { path, rect } = use2DPathRenderer(rules, actions, axiom, steps)
+    const { path, rect } = use2DPathRenderer(
+        axiom,
+        productionRules,
+        steps,
+        renderingRules,
+    )
 
     return <svg
         id="l-system-renderer"

@@ -10,9 +10,9 @@ import {
 
 interface ICanvasSystemProps<Alphabet extends ILSystemSymbols> {
     axiom: ILSystemWord<Alphabet>
-    rules: ILSystemProductionRulesMap<Alphabet>
-    actions: ILSystemRenderingRulesMap<Alphabet>
+    productionRules: ILSystemProductionRulesMap<Alphabet>
     steps: number
+    renderingRules: ILSystemRenderingRulesMap<Alphabet>
     backgroundColor?: string
     strokeColor?: string
     strokeThickness?: number
@@ -27,8 +27,8 @@ function CanvasLSystem<Alphabet extends ILSystemSymbols>(
         strokeColor,
         strokeThickness,
         axiom,
-        rules,
-        actions,
+        productionRules,
+        renderingRules,
         steps,
         padding,
     } = {
@@ -40,7 +40,12 @@ function CanvasLSystem<Alphabet extends ILSystemSymbols>(
     }
 
     const canvasEl = React.useRef<HTMLCanvasElement>(null)
-    const { path, rect } = use2DPathRenderer(rules, actions, axiom, steps)
+    const { path, rect } = use2DPathRenderer(
+        axiom,
+        productionRules,
+        steps,
+        renderingRules,
+    )
     const [ width, setWidth ] = React.useState(0)
     const [ height, setHeight ] = React.useState(0)
 
