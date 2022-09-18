@@ -5,13 +5,10 @@ import {
 } from "./l-system"
 
 import {
+    type IRect,
+    Path2DRenderDevice,
     Renderer,
 } from "./renderer"
-
-import {
-    type IRect,
-    Path2DRenderDevice
-} from "./path2d-render-device"
 
 import type {
     ILSystemRenderingRulesMap,

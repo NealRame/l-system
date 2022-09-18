@@ -29,15 +29,10 @@ export class LSystem<Alphabet extends ILSystemSymbols> {
     }
 }
 
-export function defineLSystemRules<Alphabet extends ILSystemSymbols>(
-    rules: ILSystemProductionRulesMap<Alphabet>
-): ILSystemProductionRulesMap<Alphabet> { return rules }
-
-export function defineLSystemTurtleActions<Alphabet extends ILSystemSymbols>(
-    actions: ILSystemRenderingRulesMap<Alphabet>
-): ILSystemRenderingRulesMap<Alphabet> { return actions }
-
-
 export function defineLSystemAxiom<Alphabet extends ILSystemSymbols>(
     axiom: ILSystemWord<Alphabet>
 ): ILSystemWord<Alphabet> { return axiom }
+
+export function defineLSystemProductionRules<Alphabet extends ILSystemSymbols>(
+    rules: ILSystemProductionRulesMap<Alphabet>
+): ILSystemProductionRulesMap<Alphabet> { return rules }
