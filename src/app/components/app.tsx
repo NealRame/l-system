@@ -33,19 +33,33 @@ const app = () => {
         strokeColor,
         strokeThickness,
         padding,
+        renderer,
     } = useAppSelector(selectRenderingOptions)
 
     return <>
-        <LSystemCanvasRenderer
-            backgroundColor={ backgroundColor }
-            strokeColor={ strokeColor }
-            strokeThickness={ strokeThickness }
-            padding={ padding }
-            axiom={ axiom as ILSystemWord }
-            productionRules={ rules as ILSystemProductionRulesMap }
-            steps={ steps }
-            renderingRules={ actions as ILSystemRenderingRulesMap }
-        />
+        {
+            renderer === "canvas"
+                ? <LSystemCanvasRenderer
+                        backgroundColor={ backgroundColor }
+                        strokeColor={ strokeColor }
+                        strokeThickness={ strokeThickness }
+                        padding={ padding }
+                        axiom={ axiom as ILSystemWord }
+                        productionRules={ rules as ILSystemProductionRulesMap }
+                        steps={ steps }
+                        renderingRules={ actions as ILSystemRenderingRulesMap }
+                    />
+                : <LSystemSVGRenderer
+                        backgroundColor={ backgroundColor }
+                        strokeColor={ strokeColor }
+                        strokeThickness={ strokeThickness }
+                        padding={ padding }
+                        axiom={ axiom as ILSystemWord }
+                        productionRules={ rules as ILSystemProductionRulesMap }
+                        steps={ steps }
+                        renderingRules={ actions as ILSystemRenderingRulesMap }
+                    />
+        }
         <Inspector />
     </>
 }

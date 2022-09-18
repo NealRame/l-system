@@ -167,6 +167,7 @@ interface RendererOptionsState {
     strokeColor: string,
     strokeThickness: number,
     padding: number,
+    renderer: "svg" | "canvas",
 }
 
 const rendererOptionsSlice = createSlice({
@@ -176,6 +177,7 @@ const rendererOptionsSlice = createSlice({
         strokeColor: "#ffffff",
         strokeThickness: 1,
         padding: 8,
+        renderer: "svg",
     } as RendererOptionsState,
     reducers: {
         updateRenderingOptions: (state, action: PayloadAction<Partial<RendererOptionsState>>) => {

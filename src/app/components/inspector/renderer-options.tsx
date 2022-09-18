@@ -20,6 +20,7 @@ const RenderingOptionsInspector = () => {
         strokeColor: "stroke color",
         strokeThickness: "stroke thickness",
         padding: "padding",
+        renderer: "renderer",
     }
     const callbacks = {
         backgroundColor: (color: string) => {
@@ -42,6 +43,11 @@ const RenderingOptionsInspector = () => {
                 padding,
             }))
         },
+        renderer: (renderer: "canvas" | "svg") => {
+            dispatch(updateRenderingOptions({
+                renderer,
+            }))
+        }
     }
     return <section id={ id }>
         <header>
@@ -84,6 +90,18 @@ const RenderingOptionsInspector = () => {
                     callbacks.padding(parseFloat(e.target.value))
                 } }
             />
+            <label htmlFor={ `${id}--renderer`}>{ labels.renderer }</label>
+            <select
+                id={ `${id}--renderer` }
+                onChange={ e => {
+                    if (e.target.value === "canvas" || e.target.value === "svg") {
+                        callbacks.renderer(e.target.value)
+                    }
+                } }
+            >
+                <option value="svg">SVG</option>
+                <option value="canvas">Canvas</option>
+            </select>
         </main>
     </section>
 }
