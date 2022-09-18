@@ -1,13 +1,13 @@
 import * as React from "react"
 
 import {
-    Generator
+    createGenerator
 } from "./generator"
 
 import {
     type IRect,
     Path2DRenderDevice,
-    Renderer,
+    createRenderer,
 } from "./renderer"
 
 import type {
@@ -26,12 +26,12 @@ export function useLSystem(
     const [rect, setRect] = React.useState<IRect>({ x: 0, y: 0, w: 0, h: 0 })
 
     React.useEffect(() => {
-        const generator = new Generator(rules)
-        const renderer = new Renderer(actions)
+        const generate = createGenerator(rules)
+        const render = createRenderer(actions)
         const device = new Path2DRenderDevice()
 
-        renderer.render(
-            generator.generate(axiom as ILSystemWord, steps),
+        render(
+            generate(axiom as ILSystemWord, steps),
             device,
         )
         setPath(device.path)

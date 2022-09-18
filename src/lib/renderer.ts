@@ -82,21 +82,19 @@ export class Path2DRenderDevice implements ILSystemRenderDevice {
     }
 }
 
-export class Renderer<Alphabet extends ILSystemSymbols> {
-    constructor(
-        private actions_: ILSystemRenderingRulesMap<Alphabet>,
-    ) { }
-
-    render(
+export function createRenderer<Alphabet extends ILSystemSymbols>(
+    rules: ILSystemRenderingRulesMap<Alphabet>,
+) {
+    return (
         word: ILSystemWord<Alphabet>,
         device: ILSystemRenderDevice,
-    ) {
-        word.forEach(symbol => {
-            if (symbol in this.actions_) {
-                const [action, ...args] = this.actions_[symbol]!
+    ) => {
+        for (const symbol of word) {
+            if (symbol in rules) {
+                const [action, ...args] = rules[symbol]!
                 ;(device[action] as Function).call(device, ...args)
             }
-        })
+        }
     }
 }
 

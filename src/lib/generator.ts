@@ -2,30 +2,31 @@ import type {
     ILSystemSymbols,
     ILSystemWord,
     ILSystemProductionRulesMap,
-    ILSystemRenderingRulesMap,
 } from "./types"
 
-export class Generator<Alphabet extends ILSystemSymbols> {
-    private apply_(symbol: Alphabet)
-        : ILSystemWord<Alphabet> {
-        return this.rules_[symbol] ?? [symbol]
-    }
+export function createSymbolTransformer<Alphabet extends ILSystemSymbols>(
+    rules: ILSystemProductionRulesMap<Alphabet>,
+) {
+    return (symbol: Alphabet) => rules[symbol] ?? [symbol]
+}
 
-    private step_(word: ILSystemWord<Alphabet>)
-        : ILSystemWord<Alphabet> {
-        return word.flatMap(symbol => this.apply_(symbol))
-    }
+export function createWordTransformer<Alphabet extends ILSystemSymbols>(
+    rules: ILSystemProductionRulesMap<Alphabet>,
+) {
+    const transformSymbol = createSymbolTransformer(rules)
+    return (word: ILSystemWord<Alphabet>) => word.flatMap(transformSymbol)
+}
 
-    constructor(
-        private rules_: ILSystemProductionRulesMap<Alphabet>,
-    ) { }
-
-    generate(axiom: ILSystemWord<Alphabet>, steps: number)
+export function createGenerator<Alphabet extends ILSystemSymbols>(
+    rules: ILSystemProductionRulesMap<Alphabet>,
+) {
+    const transformWord = createWordTransformer(rules)
+    return function generate(axiom: ILSystemWord<Alphabet>, steps: number)
         : ILSystemWord<Alphabet> {
         if (steps === 0) {
             return axiom
         }
-        return this.step_(this.generate(axiom, steps - 1))
+        return transformWord(generate(axiom, steps - 1))
     }
 }
 
