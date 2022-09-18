@@ -9,7 +9,7 @@ import {
 import { useAppSelector } from "../hooks"
 import {
     selectProductionRules,
-    selectGeneratorOptions,
+    selectProductionOptions,
     selectRenderingRules,
     selectRenderingOptions,
 } from "../slices"
@@ -24,7 +24,7 @@ const app = () => {
     const {
         axiom,
         steps,
-    } = useAppSelector(selectGeneratorOptions)
+    } = useAppSelector(selectProductionOptions)
 
     const renderingRules = useAppSelector(selectRenderingRules)
 

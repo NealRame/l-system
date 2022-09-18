@@ -7,17 +7,17 @@ import {
 
 import {
     selectAlphabet,
-    updateGeneratorOptions,
-    selectGeneratorOptions,
+    updateProductionOptions,
+    selectProductionOptions,
 } from "../../slices"
 
 import WordInspector from "./word"
 
-const GeneratorInspector = () => {
+const ProductionOptionsInspector = () => {
     const dispatch = useAppDispatch()
 
     const alphabet = useAppSelector(selectAlphabet)
-    const generatorOptions = useAppSelector(selectGeneratorOptions)
+    const generatorOptions = useAppSelector(selectProductionOptions)
 
     const id = "l-system--generator-inspector"
     return <section id={ id }>
@@ -31,7 +31,7 @@ const GeneratorInspector = () => {
                 alphabet={ alphabet }
                 word={ generatorOptions.axiom }
                 onWordChange={ axiom => {
-                    dispatch(updateGeneratorOptions({
+                    dispatch(updateProductionOptions({
                         axiom,
                     }))
                 } }
@@ -45,7 +45,7 @@ const GeneratorInspector = () => {
                 value={ generatorOptions.steps }
                 onChange={ e => {
                     const steps = parseInt(e.target.value, 10)
-                    dispatch(updateGeneratorOptions({
+                    dispatch(updateProductionOptions({
                         steps,
                     }))
                  } }
@@ -54,4 +54,4 @@ const GeneratorInspector = () => {
     </section>
 }
 
-export default GeneratorInspector
+export default ProductionOptionsInspector

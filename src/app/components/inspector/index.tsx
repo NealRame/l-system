@@ -3,7 +3,7 @@ import * as React from "react"
 import InspectorButton from "./button"
 import AlphabetInspector from "./alphabet"
 import ProductionRulesInspector from "./production-rules"
-import GeneratorOptionsInspector from "./generator-options"
+import ProductionOptionsInspector from "./production-options"
 import RenderingRulesInspector from "./rendering-rules"
 import RenderingOptionsInpector from "./renderer-options"
 
@@ -21,7 +21,7 @@ const Inspector = () => {
         <InspectorButton active={ active } onClick={ onClick }/>
         <AlphabetInspector />
         <ProductionRulesInspector />
-        <GeneratorOptionsInspector />
+        <ProductionOptionsInspector />
         <RenderingRulesInspector />
         <RenderingOptionsInpector />
     </form>

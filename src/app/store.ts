@@ -6,7 +6,7 @@ import {
 import {
     alphabetReducer as alphabet,
     productionRulesReducer as productionRules,
-    generatorOptionsReducer as generatorOptions,
+    productionOptionsReducer as productionOptions,
     renderingRulesReducer as renderingRules,
     rendererOptionsReducer as rendererOptions
 } from "./slices"
@@ -15,7 +15,7 @@ const store = configureStore({
     reducer: {
         alphabet,
         productionRules,
-        generatorOptions,
+        productionOptions,
         renderingRules,
         rendererOptions,
     },

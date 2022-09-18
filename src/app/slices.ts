@@ -99,19 +99,19 @@ export const productionRulesReducer = rulesSlice.reducer
 /******************************************************************************
  * Generator options slice
  *****************************************************************************/
-interface GeneratorOptionsState {
+interface ProductionOptionsState {
     axiom: ILSystemWord,
     steps: number,
 }
 
-const generatorOptionsSlice = createSlice({
-    name: "generatorOptions",
+const productionOptionsSlice = createSlice({
+    name: "productionOptions",
     initialState: {
         axiom: [],
         steps: 0,
-    } as GeneratorOptionsState,
+    } as ProductionOptionsState,
     reducers: {
-        updateGeneratorOptions: (state, action: PayloadAction<Partial<GeneratorOptionsState>>) => {
+        updateProductionOptions: (state, action: PayloadAction<Partial<ProductionOptionsState>>) => {
             const { payload: options } = action
             Object.assign(state, options)
         },
@@ -119,12 +119,12 @@ const generatorOptionsSlice = createSlice({
 })
 
 export const {
-    updateGeneratorOptions,
-} = generatorOptionsSlice.actions
+    updateProductionOptions,
+} = productionOptionsSlice.actions
 
-export const selectGeneratorOptions = (state: RootState) => state.generatorOptions
+export const selectProductionOptions = (state: RootState) => state.productionOptions
 
-export const generatorOptionsReducer = generatorOptionsSlice.reducer
+export const productionOptionsReducer = productionOptionsSlice.reducer
 
 /******************************************************************************
  * Actions slice
