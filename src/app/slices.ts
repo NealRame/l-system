@@ -64,7 +64,7 @@ export const alphabetReducer = alphabetSlice.reducer
  * Rules slice
  *****************************************************************************/
 interface IRulesState {
-    value: Partial<ILSystemProductionRules>
+    value: ILSystemProductionRules
 }
 
 const rulesSlice = createSlice({
@@ -73,14 +73,14 @@ const rulesSlice = createSlice({
         value: {},
     } as IRulesState,
     reducers: {
-        updateRules: (state, action: PayloadAction<Partial<ILSystemProductionRules>>) => {
+        updateRules: (state, action: PayloadAction<ILSystemProductionRules>) => {
             const { payload: rules } = action
             state.value = {
                 ...state.value,
                 ...rules,
             }
         },
-        setRules: (state, action: PayloadAction<Partial<ILSystemProductionRules>>) => {
+        setRules: (state, action: PayloadAction<ILSystemProductionRules>) => {
             const { payload: rules } = action
             state.value = rules
         },
@@ -130,7 +130,7 @@ export const generatorOptionsReducer = generatorOptionsSlice.reducer
  * Actions slice
  *****************************************************************************/
 interface IActionsState {
-    value: Partial<ILSystemRenderActionMap>
+    value: ILSystemRenderActionMap
 }
 
 const actionsSlice = createSlice({
@@ -139,14 +139,14 @@ const actionsSlice = createSlice({
         value: {},
     } as IActionsState,
     reducers: {
-        updateActions: (state, action: PayloadAction<Partial<ILSystemRenderActionMap>>) => {
+        updateActions: (state, action: PayloadAction<ILSystemRenderActionMap>) => {
             const { payload: actions } = action
             state.value = {
                 ...state.value,
                 ...actions,
             }
         },
-        setActions: (state, action: PayloadAction<Partial<ILSystemRenderActionMap>>) => {
+        setActions: (state, action: PayloadAction<ILSystemRenderActionMap>) => {
             const { payload: actions } = action
             state.value = actions
         },

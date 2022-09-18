@@ -104,7 +104,7 @@ const ActionsInspector = () => {
         const initial = Object.assign({}, ...alphabet.map(symbol => {
             return {
                 [symbol]: actions[symbol] ?? ["noop"],
-            } as Partial<ILSystemRenderActionMap>
+            } as ILSystemRenderActionMap
         }))
         dispatch(setActions(initial))
     }, [alphabet])

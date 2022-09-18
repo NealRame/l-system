@@ -20,8 +20,8 @@ import type {
 } from "./types"
 
 export function useLSystem(
-    rules: Partial<ILSystemProductionRules>,
-    actions: Partial<ILSystemRenderActionMap>,
+    rules: ILSystemProductionRules,
+    actions: ILSystemRenderActionMap,
     axiom: ILSystemWord,
     steps: number,
 ) {
@@ -29,8 +29,8 @@ export function useLSystem(
     const [rect, setRect] = React.useState<IRect>({ x: 0, y: 0, w: 0, h: 0 })
 
     React.useEffect(() => {
-        const lsystem = new LSystem(rules as ILSystemProductionRules)
-        const renderer = new Renderer(actions as ILSystemRenderActionMap)
+        const lsystem = new LSystem(rules)
+        const renderer = new Renderer(actions)
         const device = new Path2DRenderDevice()
 
         renderer.render(

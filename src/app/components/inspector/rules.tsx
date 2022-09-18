@@ -55,7 +55,7 @@ const RulesInspector = () => {
         const initial = Object.assign({}, alphabet.map(symbol => {
             return {
                 [symbol]: rules[symbol] ?? [symbol],
-            } as Partial<ILSystemProductionRules>
+            } as ILSystemProductionRules
         }))
         dispatch(setRules(initial))
     }, [alphabet])
