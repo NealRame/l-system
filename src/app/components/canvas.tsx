@@ -5,7 +5,7 @@ import {
     type ILSystemRenderingRulesMap,
     type ILSystemProductionRulesMap,
     type ILSystemWord,
-    useLSystem,
+    use2DPathRenderer,
 } from "../../lib"
 
 interface ICanvasSystemProps<Alphabet extends ILSystemSymbols> {
@@ -40,7 +40,7 @@ function CanvasLSystem<Alphabet extends ILSystemSymbols>(
     }
 
     const canvasEl = React.useRef<HTMLCanvasElement>(null)
-    const { path, rect } = useLSystem(rules, actions, axiom, steps)
+    const { path, rect } = use2DPathRenderer(rules, actions, axiom, steps)
     const [ width, setWidth ] = React.useState(0)
     const [ height, setHeight ] = React.useState(0)
 

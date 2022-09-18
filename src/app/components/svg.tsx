@@ -5,7 +5,7 @@ import {
     type ILSystemRenderingRulesMap,
     type ILSystemProductionRulesMap,
     type ILSystemWord,
-    useLSystem,
+    use2DPathRenderer,
 } from "../../lib"
 
 interface ISVGLSystemProps<Alphabet extends ILSystemSymbols> {
@@ -39,7 +39,7 @@ function SVGLSystem<Alphabet extends ILSystemSymbols>(
         ...props
     }
 
-    const { path, rect } = useLSystem(rules, actions, axiom, steps)
+    const { path, rect } = use2DPathRenderer(rules, actions, axiom, steps)
 
     return <svg
         id="l-system-renderer"

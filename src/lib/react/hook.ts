@@ -2,21 +2,21 @@ import * as React from "react"
 
 import {
     createGenerator
-} from "./generator"
+} from "../generator"
 
 import {
     type IRect,
     Path2DRenderDevice,
     createRenderer,
-} from "./renderer"
+} from "../renderer"
 
 import type {
     ILSystemRenderingRulesMap,
     ILSystemProductionRulesMap,
     ILSystemWord,
-} from "./types"
+} from "../types"
 
-export function useLSystem(
+export function use2DPathRenderer(
     rules: ILSystemProductionRulesMap,
     actions: ILSystemRenderingRulesMap,
     axiom: ILSystemWord,
