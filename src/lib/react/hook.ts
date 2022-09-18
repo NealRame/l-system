@@ -26,9 +26,9 @@ export function use2DPathRenderer(
     const [rect, setRect] = React.useState<IRect>({ x: 0, y: 0, w: 0, h: 0 })
 
     React.useEffect(() => {
-        const generate = createGenerator(rules)
-        const render = createRenderer(actions)
         const device = new Path2DRenderDevice()
+        const render = createRenderer(actions)
+        const generate = createGenerator(rules)
 
         render(
             generate(axiom as ILSystemWord, steps),
