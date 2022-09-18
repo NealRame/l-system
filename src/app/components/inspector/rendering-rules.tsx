@@ -57,7 +57,7 @@ const Action = ({
         }
     }
 
-    return <div className="l-system--actions-inspector-action">
+    return <div className="l-system--rendering-rules-inspector-rule">
         <label>{ symbol }</label>
         <select
             ref={ actionTypeEl }
@@ -109,7 +109,7 @@ const RenderingRulesInspector = () => {
         dispatch(setRenderingRules(initial))
     }, [alphabet])
 
-    return <section id="l-system--actions-inspector">
+    return <section id="l-system--rendering-rules-inspector">
         <header>
             <h2>Rendering Rules</h2>
         </header>

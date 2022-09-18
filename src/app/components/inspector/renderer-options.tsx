@@ -14,7 +14,7 @@ const RenderingOptionsInspector = () => {
     const renderingOptions = useAppSelector(selectRenderingOptions)
     const dispatch = useAppDispatch()
 
-    const id = "l-system--colors-inspector"
+    const id = "l-system--rendering-options-inspector"
     const labels = {
         backgroundColor: "background color",
         strokeColor: "stroke color",

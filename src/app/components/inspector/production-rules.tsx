@@ -33,8 +33,8 @@ const Rule = ({
     word,
     onChange,
 }: IRuleProps) => {
-    const className = "l-system--rules-inspector-rule"
-    return <div className="l-system--rules-inspector-rule">
+    const className = "l-system--production-rules-inspector-rule"
+    return <div className={ className }>
         <label htmlFor={ `${className}--${symbol}` }>{ symbol }</label>
         <WordInspector
             id={ `${className}--${symbol}` }
@@ -60,7 +60,7 @@ const ProductionRulesInspector = () => {
         dispatch(setProductionRules(initial))
     }, [alphabet])
 
-    return <section id="l-system--rules-inspector">
+    return <section id="l-system--production-rules-inspector">
         <header>
             <h2>Production rules</h2>
         </header>

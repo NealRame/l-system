@@ -17,9 +17,12 @@ const ProductionOptionsInspector = () => {
     const dispatch = useAppDispatch()
 
     const alphabet = useAppSelector(selectAlphabet)
-    const generatorOptions = useAppSelector(selectProductionOptions)
+    const {
+        axiom,
+        steps,
+    } = useAppSelector(selectProductionOptions)
 
-    const id = "l-system--generator-inspector"
+    const id = "l-system--production-options-inspector"
     return <section id={ id }>
         <header>
             <h2>Production options</h2>
@@ -29,7 +32,7 @@ const ProductionOptionsInspector = () => {
             <WordInspector
                 id={ `${id}--axiom` }
                 alphabet={ alphabet }
-                word={ generatorOptions.axiom }
+                word={ axiom }
                 onWordChange={ axiom => {
                     dispatch(updateProductionOptions({
                         axiom,
@@ -42,7 +45,7 @@ const ProductionOptionsInspector = () => {
                 type="number"
                 min="0"
                 max="10"
-                value={ generatorOptions.steps }
+                value={ steps }
                 onChange={ e => {
                     const steps = parseInt(e.target.value, 10)
                     dispatch(updateProductionOptions({

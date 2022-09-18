@@ -144,10 +144,10 @@ label {
 }
 
 #l-system--alphabet-inspector button.active {
-    background-color: aqua;
+    background-color: aquamarine;
 }
 
-#l-system--rules-inspector ul {
+#l-system--production-rules-inspector ul {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -158,14 +158,14 @@ label {
     padding: 0;
 }
 
-.l-system--rules-inspector-rule {
+.l-system--production-rules-inspector-rule {
     display: grid;
     grid-template-columns: 1rem 1fr;
     align-items: center;
     gap: 0.25rem;
 }
 
-#l-system--actions-inspector ul {
+#l-system--rendering-rules-inspector ul {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -176,7 +176,7 @@ label {
     list-style: none;
 }
 
-.l-system--actions-inspector-action {
+.l-system--rendering-rules-inspector-rule {
     display: grid;
     grid-template-columns: 1rem 100fr 6ch;
     align-items: center;
@@ -184,7 +184,7 @@ label {
 }
 
 
-#l-system--generator-inspector > main {
+#l-system--production-options-inspector > main {
     display: grid;
     grid-template-columns: min-content 1fr;
     align-items: center;
@@ -193,7 +193,7 @@ label {
     align-items: center;
 }
 
-#l-system--colors-inspector > main {
+#l-system--rendering-options-inspector > main {
     display: grid;
     grid-template-columns: 1fr 6ch;
     align-items: center;
