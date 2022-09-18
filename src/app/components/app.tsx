@@ -15,8 +15,8 @@ import {
 } from "../slices"
 
 import Inspector from "./inspector"
-import CanvasLSystem from "./canvas"
-import SVGLSystem from "./svg"
+import LSystemCanvasRenderer from "./canvas"
+import LSystemSVGRenderer from "./svg"
 
 const app = () => {
     const rules = useAppSelector(selectRules)
@@ -36,7 +36,7 @@ const app = () => {
     } = useAppSelector(selectRenderingOptions)
 
     return <>
-        <CanvasLSystem
+        <LSystemCanvasRenderer
             backgroundColor={ backgroundColor }
             strokeColor={ strokeColor }
             strokeThickness={ strokeThickness }

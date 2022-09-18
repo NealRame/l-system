@@ -2,25 +2,15 @@ import * as React from "react"
 
 import {
     type ILSystemSymbols,
-    type ILSystemRenderingRulesMap,
-    type ILSystemProductionRulesMap,
-    type ILSystemWord,
     use2DPathRenderer,
 } from "../../lib"
 
-interface ISVGLSystemProps<Alphabet extends ILSystemSymbols> {
-    axiom: ILSystemWord<Alphabet>
-    productionRules: ILSystemProductionRulesMap<Alphabet>
-    renderingRules: ILSystemRenderingRulesMap<Alphabet>
-    steps: number
-    backgroundColor?: string
-    strokeColor?: string
-    strokeThickness?: number
-    padding?: number
-}
+import type {
+    ILSystemRendererComponentProps,
+} from "./types"
 
-function SVGLSystem<Alphabet extends ILSystemSymbols>(
-    props: ISVGLSystemProps<Alphabet>,
+function LSystemSVGRenderer<Alphabet extends ILSystemSymbols>(
+    props: ILSystemRendererComponentProps<Alphabet>,
 ) {
     const {
         backgroundColor,
@@ -57,8 +47,8 @@ function SVGLSystem<Alphabet extends ILSystemSymbols>(
         stroke={ strokeColor }
         strokeWidth={ `${strokeThickness}px` }
         strokeLinecap="round"
-        vector-effect="non-scaling-stroke"
+        vectorEffect="non-scaling-stroke"
     /></g></svg>
 }
 
-export default SVGLSystem
+export default LSystemSVGRenderer

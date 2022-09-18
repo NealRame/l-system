@@ -2,25 +2,15 @@ import * as React from "react"
 
 import {
     type ILSystemSymbols,
-    type ILSystemRenderingRulesMap,
-    type ILSystemProductionRulesMap,
-    type ILSystemWord,
     use2DPathRenderer,
 } from "../../lib"
 
-interface ICanvasSystemProps<Alphabet extends ILSystemSymbols> {
-    axiom: ILSystemWord<Alphabet>
-    productionRules: ILSystemProductionRulesMap<Alphabet>
-    steps: number
-    renderingRules: ILSystemRenderingRulesMap<Alphabet>
-    backgroundColor?: string
-    strokeColor?: string
-    strokeThickness?: number
-    padding?: number
-}
+import type {
+    ILSystemRendererComponentProps,
+} from "./types"
 
-function CanvasLSystem<Alphabet extends ILSystemSymbols>(
-    props: ICanvasSystemProps<Alphabet>,
+function LSystemCanvasRenderer<Alphabet extends ILSystemSymbols>(
+    props: ILSystemRendererComponentProps<Alphabet>,
 ) {
     const {
         backgroundColor,
@@ -98,4 +88,4 @@ function CanvasLSystem<Alphabet extends ILSystemSymbols>(
     return <canvas id="l-system-renderer" ref={canvasEl}/>
 }
 
-export default CanvasLSystem
+export default LSystemCanvasRenderer
