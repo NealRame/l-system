@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import type {
-    ILSystemRules,
+    ILSystemProductionRules,
     ILSystemSymbols,
     ILSystemWord,
 } from "../../../lib"
@@ -55,7 +55,7 @@ const RulesInspector = () => {
         const initial = Object.assign({}, alphabet.map(symbol => {
             return {
                 [symbol]: rules[symbol] ?? [symbol],
-            } as Partial<ILSystemRules>
+            } as Partial<ILSystemProductionRules>
         }))
         dispatch(setRules(initial))
     }, [alphabet])

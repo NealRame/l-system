@@ -12,13 +12,13 @@ import type {
     IRect,
     ILSystemSymbols,
     ILSystemTurtleActions,
-    ILSystemRules,
+    ILSystemProductionRules,
     ILSystemWord,
     ITurtle,
 } from "./types"
 
 export function useLSystem(
-    rules: Partial<ILSystemRules>,
+    rules: Partial<ILSystemProductionRules>,
     actions: Partial<ILSystemTurtleActions>,
     axiom: ILSystemWord,
     steps: number,
@@ -37,7 +37,7 @@ export function useLSystem(
 
     React.useEffect(() => {
         const turtle = new Turtle()
-        const lsystem = new LSystem(rules as ILSystemRules)
+        const lsystem = new LSystem(rules as ILSystemProductionRules)
 
         lsystem
             .generate(axiom as ILSystemWord, steps)

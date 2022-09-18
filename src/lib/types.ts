@@ -28,7 +28,7 @@ export type ILSystemSymbols
 export type ILSystemWord<Alphabet extends ILSystemSymbols = ILSystemSymbols>
     = Array<Alphabet>
 
-export type ILSystemRules<Alphabet extends ILSystemSymbols = ILSystemSymbols>
+export type ILSystemProductionRules<Alphabet extends ILSystemSymbols = ILSystemSymbols>
     = {
     [key in Alphabet]: ILSystemWord<Alphabet>
 }

@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import {
-    type ILSystemRules,
+    type ILSystemProductionRules,
     type ILSystemTurtleActions,
     type ILSystemWord,
 } from "../../lib"
@@ -42,7 +42,7 @@ const app = () => {
             strokeThickness={ strokeThickness }
             padding={ padding }
             axiom={ axiom as ILSystemWord }
-            rules={ rules as ILSystemRules }
+            rules={ rules as ILSystemProductionRules }
             actions={ actions as ILSystemTurtleActions }
             steps={ steps }
         />

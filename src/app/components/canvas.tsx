@@ -3,14 +3,14 @@ import * as React from "react"
 import {
     type ILSystemSymbols,
     type ILSystemTurtleActions,
-    type ILSystemRules,
+    type ILSystemProductionRules,
     type ILSystemWord,
     useLSystem,
 } from "../../lib"
 
 interface ICanvasSystemProps<Alphabet extends ILSystemSymbols> {
     axiom: ILSystemWord<Alphabet>
-    rules: ILSystemRules<Alphabet>
+    rules: ILSystemProductionRules<Alphabet>
     actions: ILSystemTurtleActions<Alphabet>
     steps: number
     backgroundColor?: string

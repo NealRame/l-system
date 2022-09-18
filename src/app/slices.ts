@@ -4,7 +4,7 @@ import {
 } from "@reduxjs/toolkit"
 
 import type {
-    ILSystemRules,
+    ILSystemProductionRules,
     ILSystemSymbols,
     ILSystemTurtleActions,
     ILSystemWord,
@@ -64,7 +64,7 @@ export const alphabetReducer = alphabetSlice.reducer
  * Rules slice
  *****************************************************************************/
 interface IRulesState {
-    value: Partial<ILSystemRules>
+    value: Partial<ILSystemProductionRules>
 }
 
 const rulesSlice = createSlice({
@@ -73,14 +73,14 @@ const rulesSlice = createSlice({
         value: {},
     } as IRulesState,
     reducers: {
-        updateRules: (state, action: PayloadAction<Partial<ILSystemRules>>) => {
+        updateRules: (state, action: PayloadAction<Partial<ILSystemProductionRules>>) => {
             const { payload: rules } = action
             state.value = {
                 ...state.value,
                 ...rules,
             }
         },
-        setRules: (state, action: PayloadAction<Partial<ILSystemRules>>) => {
+        setRules: (state, action: PayloadAction<Partial<ILSystemProductionRules>>) => {
             const { payload: rules } = action
             state.value = rules
         },
