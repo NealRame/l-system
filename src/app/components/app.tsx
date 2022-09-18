@@ -1,11 +1,5 @@
 import * as React from "react"
 
-import {
-    type ILSystemProductionRulesMap,
-    type ILSystemRenderingRulesMap,
-    type ILSystemWord,
-} from "../../lib"
-
 import { useAppSelector } from "../hooks"
 import {
     selectProductionRules,
@@ -18,49 +12,28 @@ import Inspector from "./inspector"
 import LSystemCanvasRenderer from "./canvas"
 import LSystemSVGRenderer from "./svg"
 
-const app = () => {
-    const rules = useAppSelector(selectProductionRules)
-
-    const {
-        axiom,
-        steps,
-    } = useAppSelector(selectProductionOptions)
+const useAppInspectorSelector = () => {
+    const productionRules = useAppSelector(selectProductionRules)
+    const productionOptions = useAppSelector(selectProductionOptions)
 
     const renderingRules = useAppSelector(selectRenderingRules)
+    const renderingOptions = useAppSelector(selectRenderingOptions)
 
-    const {
-        backgroundColor,
-        strokeColor,
-        strokeThickness,
-        padding,
-        renderer,
-    } = useAppSelector(selectRenderingOptions)
+    return {
+        productionRules, ...productionOptions,
+        renderingRules, ...renderingOptions,
+    }
+}
 
+const app = () => {
+    const props = useAppInspectorSelector()
     return <>
-        {
-            renderer === "canvas"
-                ? <LSystemCanvasRenderer
-                        backgroundColor={ backgroundColor }
-                        strokeColor={ strokeColor }
-                        strokeThickness={ strokeThickness }
-                        padding={ padding }
-                        axiom={ axiom }
-                        productionRules={ rules }
-                        steps={ steps }
-                        renderingRules={ renderingRules }
-                    />
-                : <LSystemSVGRenderer
-                        backgroundColor={ backgroundColor }
-                        strokeColor={ strokeColor }
-                        strokeThickness={ strokeThickness }
-                        padding={ padding }
-                        axiom={ axiom }
-                        productionRules={ rules }
-                        steps={ steps }
-                        renderingRules={ renderingRules }
-                    />
-        }
         <Inspector />
+        {
+            props.renderer === "canvas"
+                ? <LSystemCanvasRenderer { ...props }/>
+                : <LSystemSVGRenderer { ...props }/>
+        }
     </>
 }
 
