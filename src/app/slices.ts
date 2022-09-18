@@ -68,19 +68,19 @@ interface IRulesState {
 }
 
 const rulesSlice = createSlice({
-    name: "rules",
+    name: "productionRules",
     initialState: {
         value: {},
     } as IRulesState,
     reducers: {
-        updateRules: (state, action: PayloadAction<ILSystemProductionRulesMap>) => {
+        updateProductionRules: (state, action: PayloadAction<ILSystemProductionRulesMap>) => {
             const { payload: rules } = action
             state.value = {
                 ...state.value,
                 ...rules,
             }
         },
-        setRules: (state, action: PayloadAction<ILSystemProductionRulesMap>) => {
+        setProductionRules: (state, action: PayloadAction<ILSystemProductionRulesMap>) => {
             const { payload: rules } = action
             state.value = rules
         },
@@ -88,13 +88,13 @@ const rulesSlice = createSlice({
 })
 
 export const {
-    updateRules,
-    setRules
+    updateProductionRules,
+    setProductionRules
 } = rulesSlice.actions
 
-export const selectRules = (state: RootState) => state.rules.value
+export const selectProductionRules = (state: RootState) => state.productionRules.value
 
-export const rulesReducer = rulesSlice.reducer
+export const productionRulesReducer = rulesSlice.reducer
 
 /******************************************************************************
  * Generator options slice
@@ -129,35 +129,38 @@ export const generatorOptionsReducer = generatorOptionsSlice.reducer
 /******************************************************************************
  * Actions slice
  *****************************************************************************/
-interface IActionsState {
+interface IRenderingRulesState {
     value: ILSystemRenderingRulesMap
 }
 
-const actionsSlice = createSlice({
-    name: "actions",
+const renderingRulesSlice = createSlice({
+    name: "renderingRules",
     initialState: {
         value: {},
-    } as IActionsState,
+    } as IRenderingRulesState,
     reducers: {
-        updateActions: (state, action: PayloadAction<ILSystemRenderingRulesMap>) => {
-            const { payload: actions } = action
+        updateRenderingRules: (state, action: PayloadAction<ILSystemRenderingRulesMap>) => {
+            const { payload: rules } = action
             state.value = {
                 ...state.value,
-                ...actions,
+                ...rules,
             }
         },
-        setActions: (state, action: PayloadAction<ILSystemRenderingRulesMap>) => {
-            const { payload: actions } = action
-            state.value = actions
+        setRenderingRules: (state, action: PayloadAction<ILSystemRenderingRulesMap>) => {
+            const { payload: rules } = action
+            state.value = rules
         },
     },
 })
 
-export const { updateActions, setActions } = actionsSlice.actions
+export const {
+    updateRenderingRules,
+    setRenderingRules,
+} = renderingRulesSlice.actions
 
-export const selectActions = (state: RootState) => state.actions.value
+export const selectRenderingRules = (state: RootState) => state.renderingRules.value
 
-export const actionsReducer = actionsSlice.reducer
+export const renderingRulesReducer = renderingRulesSlice.reducer
 
 /******************************************************************************
  * Renderer options slice

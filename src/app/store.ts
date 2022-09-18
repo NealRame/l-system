@@ -5,18 +5,18 @@ import {
 
 import {
     alphabetReducer as alphabet,
-    rulesReducer as rules,
+    productionRulesReducer as productionRules,
     generatorOptionsReducer as generatorOptions,
-    actionsReducer as actions,
+    renderingRulesReducer as renderingRules,
     rendererOptionsReducer as rendererOptions
 } from "./slices"
 
 const store = configureStore({
     reducer: {
         alphabet,
-        rules,
+        productionRules,
         generatorOptions,
-        actions,
+        renderingRules,
         rendererOptions,
     },
 })

@@ -13,9 +13,9 @@ import {
 
 import {
     selectAlphabet,
-    selectRules,
-    updateRules,
-    setRules,
+    selectProductionRules,
+    updateProductionRules,
+    setProductionRules,
 } from "../../slices"
 
 import WordInspector from "./word"
@@ -45,10 +45,10 @@ const Rule = ({
     </div>
 }
 
-const RulesInspector = () => {
+const ProductionRulesInspector = () => {
     const alphabet = useAppSelector(selectAlphabet)
 
-    const rules = useAppSelector(selectRules)
+    const rules = useAppSelector(selectProductionRules)
     const dispatch = useAppDispatch()
 
     React.useEffect(() => {
@@ -57,12 +57,12 @@ const RulesInspector = () => {
                 [symbol]: rules[symbol] ?? [symbol],
             } as ILSystemProductionRulesMap
         }))
-        dispatch(setRules(initial))
+        dispatch(setProductionRules(initial))
     }, [alphabet])
 
     return <section id="l-system--rules-inspector">
         <header>
-            <h2>Rules</h2>
+            <h2>Production rules</h2>
         </header>
         <ul>
             { alphabet.map(symbol => (<li key={ symbol }>
@@ -70,7 +70,7 @@ const RulesInspector = () => {
                     alphabet={ alphabet }
                     symbol={ symbol }
                     word={ rules[symbol] ?? [symbol] }
-                    onChange={ word => dispatch(updateRules({
+                    onChange={ word => dispatch(updateProductionRules({
                         [symbol]: word,
                     })) }
                 />
@@ -79,4 +79,4 @@ const RulesInspector = () => {
     </section>
 }
 
-export default RulesInspector
+export default ProductionRulesInspector

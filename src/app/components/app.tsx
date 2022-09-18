@@ -8,9 +8,9 @@ import {
 
 import { useAppSelector } from "../hooks"
 import {
-    selectRules,
+    selectProductionRules,
     selectGeneratorOptions,
-    selectActions,
+    selectRenderingRules,
     selectRenderingOptions,
 } from "../slices"
 
@@ -19,14 +19,14 @@ import LSystemCanvasRenderer from "./canvas"
 import LSystemSVGRenderer from "./svg"
 
 const app = () => {
-    const rules = useAppSelector(selectRules)
+    const rules = useAppSelector(selectProductionRules)
 
     const {
         axiom,
         steps,
     } = useAppSelector(selectGeneratorOptions)
 
-    const actions = useAppSelector(selectActions)
+    const renderingRules = useAppSelector(selectRenderingRules)
 
     const {
         backgroundColor,
@@ -44,20 +44,20 @@ const app = () => {
                         strokeColor={ strokeColor }
                         strokeThickness={ strokeThickness }
                         padding={ padding }
-                        axiom={ axiom as ILSystemWord }
-                        productionRules={ rules as ILSystemProductionRulesMap }
+                        axiom={ axiom }
+                        productionRules={ rules }
                         steps={ steps }
-                        renderingRules={ actions as ILSystemRenderingRulesMap }
+                        renderingRules={ renderingRules }
                     />
                 : <LSystemSVGRenderer
                         backgroundColor={ backgroundColor }
                         strokeColor={ strokeColor }
                         strokeThickness={ strokeThickness }
                         padding={ padding }
-                        axiom={ axiom as ILSystemWord }
-                        productionRules={ rules as ILSystemProductionRulesMap }
+                        axiom={ axiom }
+                        productionRules={ rules }
                         steps={ steps }
-                        renderingRules={ actions as ILSystemRenderingRulesMap }
+                        renderingRules={ renderingRules }
                     />
         }
         <Inspector />

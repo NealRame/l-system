@@ -13,9 +13,9 @@ import {
 
 import {
     selectAlphabet,
-    selectActions,
-    setActions,
-    updateActions,
+    selectRenderingRules,
+    setRenderingRules,
+    updateRenderingRules,
 } from "../../slices"
 
 interface IActionProps {
@@ -94,33 +94,33 @@ const Action = ({
 }
 
 
-const ActionsInspector = () => {
+const RenderingRulesInspector = () => {
     const alphabet = useAppSelector(selectAlphabet)
-    const actions = useAppSelector(selectActions)
+    const renderingRules = useAppSelector(selectRenderingRules)
 
     const dispatch = useAppDispatch()
 
     React.useEffect(() => {
         const initial = Object.assign({}, ...alphabet.map(symbol => {
             return {
-                [symbol]: actions[symbol] ?? ["noop"],
+                [symbol]: renderingRules[symbol] ?? ["noop"],
             } as ILSystemRenderingRulesMap
         }))
-        dispatch(setActions(initial))
+        dispatch(setRenderingRules(initial))
     }, [alphabet])
 
     return <section id="l-system--actions-inspector">
         <header>
-            <h2>Actions</h2>
+            <h2>Rendering Rules</h2>
         </header>
         <ul>
-            { Object.entries(actions).map(([symbol, action]) => {
+            { Object.entries(renderingRules).map(([symbol, action]) => {
                 return <li key={ symbol }>
                     <Action
                         symbol={ symbol as ILSystemSymbols }
                         action={ action }
                         onActionChange={ action => {
-                            dispatch(updateActions({ [symbol]: action }))
+                            dispatch(updateRenderingRules({ [symbol]: action }))
                         } }
                     />
                 </li>
@@ -129,4 +129,4 @@ const ActionsInspector = () => {
     </section>
 }
 
-export default ActionsInspector
+export default RenderingRulesInspector

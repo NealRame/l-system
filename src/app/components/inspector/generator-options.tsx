@@ -22,7 +22,7 @@ const GeneratorInspector = () => {
     const id = "l-system--generator-inspector"
     return <section id={ id }>
         <header>
-            <h2>Generator</h2>
+            <h2>Production options</h2>
         </header>
         <main>
             <label htmlFor={ `${id}--axiom`}>axiom</label>
