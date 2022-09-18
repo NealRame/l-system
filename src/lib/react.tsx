@@ -14,14 +14,14 @@ import {
 } from "./path2d-render-device"
 
 import type {
-    ILSystemRenderActionMap,
-    ILSystemProductionRules,
+    ILSystemRenderingRulesMap,
+    ILSystemProductionRulesMap,
     ILSystemWord,
 } from "./types"
 
 export function useLSystem(
-    rules: ILSystemProductionRules,
-    actions: ILSystemRenderActionMap,
+    rules: ILSystemProductionRulesMap,
+    actions: ILSystemRenderingRulesMap,
     axiom: ILSystemWord,
     steps: number,
 ) {

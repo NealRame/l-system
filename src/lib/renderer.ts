@@ -1,13 +1,13 @@
 import type {
     ILSystemSymbols,
     ILSystemWord,
-    ILSystemRenderActionMap,
+    ILSystemRenderingRulesMap,
     ILSystemRenderDevice,
 } from "./types"
 
 export class Renderer<Alphabet extends ILSystemSymbols> {
     constructor(
-        private actions_: ILSystemRenderActionMap<Alphabet>,
+        private actions_: ILSystemRenderingRulesMap<Alphabet>,
     ) { }
 
     render(

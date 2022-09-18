@@ -2,7 +2,7 @@ import * as React from "react"
 
 import {
     type ILSystemSymbols,
-    type ILSystemRenderActionMap,
+    type ILSystemRenderingRulesMap,
     type ILSystemRenderAction,
 } from "../../../lib"
 
@@ -104,7 +104,7 @@ const ActionsInspector = () => {
         const initial = Object.assign({}, ...alphabet.map(symbol => {
             return {
                 [symbol]: actions[symbol] ?? ["noop"],
-            } as ILSystemRenderActionMap
+            } as ILSystemRenderingRulesMap
         }))
         dispatch(setActions(initial))
     }, [alphabet])

@@ -19,8 +19,8 @@ export type ILSystemSymbols
 export type ILSystemWord<Alphabet extends ILSystemSymbols = ILSystemSymbols>
     = Array<Alphabet>
 
-export type ILSystemProductionRules<Alphabet extends ILSystemSymbols = ILSystemSymbols>
+export type ILSystemProductionRulesMap<Alphabet extends ILSystemSymbols = ILSystemSymbols>
     = Partial<Record<Alphabet, ILSystemWord<Alphabet>>>
 
-export type ILSystemRenderActionMap<Alphabet extends ILSystemSymbols = ILSystemSymbols>
+export type ILSystemRenderingRulesMap<Alphabet extends ILSystemSymbols = ILSystemSymbols>
     = Partial<Record<Alphabet, ILSystemRenderAction>>

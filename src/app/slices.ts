@@ -4,9 +4,9 @@ import {
 } from "@reduxjs/toolkit"
 
 import type {
-    ILSystemProductionRules,
+    ILSystemProductionRulesMap,
     ILSystemSymbols,
-    ILSystemRenderActionMap,
+    ILSystemRenderingRulesMap,
     ILSystemWord,
 } from "../lib"
 
@@ -64,7 +64,7 @@ export const alphabetReducer = alphabetSlice.reducer
  * Rules slice
  *****************************************************************************/
 interface IRulesState {
-    value: ILSystemProductionRules
+    value: ILSystemProductionRulesMap
 }
 
 const rulesSlice = createSlice({
@@ -73,14 +73,14 @@ const rulesSlice = createSlice({
         value: {},
     } as IRulesState,
     reducers: {
-        updateRules: (state, action: PayloadAction<ILSystemProductionRules>) => {
+        updateRules: (state, action: PayloadAction<ILSystemProductionRulesMap>) => {
             const { payload: rules } = action
             state.value = {
                 ...state.value,
                 ...rules,
             }
         },
-        setRules: (state, action: PayloadAction<ILSystemProductionRules>) => {
+        setRules: (state, action: PayloadAction<ILSystemProductionRulesMap>) => {
             const { payload: rules } = action
             state.value = rules
         },
@@ -130,7 +130,7 @@ export const generatorOptionsReducer = generatorOptionsSlice.reducer
  * Actions slice
  *****************************************************************************/
 interface IActionsState {
-    value: ILSystemRenderActionMap
+    value: ILSystemRenderingRulesMap
 }
 
 const actionsSlice = createSlice({
@@ -139,14 +139,14 @@ const actionsSlice = createSlice({
         value: {},
     } as IActionsState,
     reducers: {
-        updateActions: (state, action: PayloadAction<ILSystemRenderActionMap>) => {
+        updateActions: (state, action: PayloadAction<ILSystemRenderingRulesMap>) => {
             const { payload: actions } = action
             state.value = {
                 ...state.value,
                 ...actions,
             }
         },
-        setActions: (state, action: PayloadAction<ILSystemRenderActionMap>) => {
+        setActions: (state, action: PayloadAction<ILSystemRenderingRulesMap>) => {
             const { payload: actions } = action
             state.value = actions
         },

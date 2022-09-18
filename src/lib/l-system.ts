@@ -1,8 +1,8 @@
 import type {
     ILSystemSymbols,
     ILSystemWord,
-    ILSystemProductionRules,
-    ILSystemRenderActionMap,
+    ILSystemProductionRulesMap,
+    ILSystemRenderingRulesMap,
 } from "./types"
 
 export class LSystem<Alphabet extends ILSystemSymbols> {
@@ -17,7 +17,7 @@ export class LSystem<Alphabet extends ILSystemSymbols> {
     }
 
     constructor(
-        private rules_: ILSystemProductionRules<Alphabet>,
+        private rules_: ILSystemProductionRulesMap<Alphabet>,
     ) { }
 
     generate(axiom: ILSystemWord<Alphabet>, steps: number)
@@ -30,12 +30,12 @@ export class LSystem<Alphabet extends ILSystemSymbols> {
 }
 
 export function defineLSystemRules<Alphabet extends ILSystemSymbols>(
-    rules: ILSystemProductionRules<Alphabet>
-): ILSystemProductionRules<Alphabet> { return rules }
+    rules: ILSystemProductionRulesMap<Alphabet>
+): ILSystemProductionRulesMap<Alphabet> { return rules }
 
 export function defineLSystemTurtleActions<Alphabet extends ILSystemSymbols>(
-    actions: ILSystemRenderActionMap<Alphabet>
-): ILSystemRenderActionMap<Alphabet> { return actions }
+    actions: ILSystemRenderingRulesMap<Alphabet>
+): ILSystemRenderingRulesMap<Alphabet> { return actions }
 
 
 export function defineLSystemAxiom<Alphabet extends ILSystemSymbols>(

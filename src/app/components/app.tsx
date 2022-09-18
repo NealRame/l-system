@@ -1,8 +1,8 @@
 import * as React from "react"
 
 import {
-    type ILSystemProductionRules,
-    type ILSystemRenderActionMap,
+    type ILSystemProductionRulesMap,
+    type ILSystemRenderingRulesMap,
     type ILSystemWord,
 } from "../../lib"
 
@@ -42,8 +42,8 @@ const app = () => {
             strokeThickness={ strokeThickness }
             padding={ padding }
             axiom={ axiom as ILSystemWord }
-            rules={ rules as ILSystemProductionRules }
-            actions={ actions as ILSystemRenderActionMap }
+            rules={ rules as ILSystemProductionRulesMap }
+            actions={ actions as ILSystemRenderingRulesMap }
             steps={ steps }
         />
         <Inspector />

@@ -2,16 +2,16 @@ import * as React from "react"
 
 import {
     type ILSystemSymbols,
-    type ILSystemRenderActionMap,
-    type ILSystemProductionRules,
+    type ILSystemRenderingRulesMap,
+    type ILSystemProductionRulesMap,
     type ILSystemWord,
     useLSystem,
 } from "../../lib"
 
 interface ICanvasSystemProps<Alphabet extends ILSystemSymbols> {
     axiom: ILSystemWord<Alphabet>
-    rules: ILSystemProductionRules<Alphabet>
-    actions: ILSystemRenderActionMap<Alphabet>
+    rules: ILSystemProductionRulesMap<Alphabet>
+    actions: ILSystemRenderingRulesMap<Alphabet>
     steps: number
     backgroundColor?: string
     strokeColor?: string
