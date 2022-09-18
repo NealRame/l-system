@@ -63,7 +63,7 @@ export const alphabetReducer = alphabetSlice.reducer
 /******************************************************************************
  * Rules slice
  *****************************************************************************/
-interface IRulesState {
+interface IProductionRulesState {
     value: ILSystemProductionRulesMap
 }
 
@@ -71,7 +71,7 @@ const rulesSlice = createSlice({
     name: "productionRules",
     initialState: {
         value: {},
-    } as IRulesState,
+    } as IProductionRulesState,
     reducers: {
         updateProductionRules: (state, action: PayloadAction<ILSystemProductionRulesMap>) => {
             const { payload: rules } = action
