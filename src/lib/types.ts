@@ -2,6 +2,7 @@ import { Symbols } from "./constants"
 
 export interface ILSystemRenderDevice {
     forward(len: number): void
+    move(len: number): void
     turn(angle: number): void
     push(): void
     pop(): void

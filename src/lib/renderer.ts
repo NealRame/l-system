@@ -68,6 +68,19 @@ export class Path2DRenderDevice implements ILSystemRenderDevice {
         this.d_ = `${this.d_} L${this.x_} ${this.y_}`
     }
 
+    move(len: number): void {
+        this.x_ = this.x_ + len*Math.cos(this.course_)
+        this.y_ = this.y_ + len*Math.sin(this.course_)
+
+        this.xMin_ = Math.min(this.xMin_, this.x_)
+        this.xMax_ = Math.max(this.xMax_, this.x_)
+
+        this.yMin_ = Math.min(this.yMin_, this.y_)
+        this.yMax_ = Math.max(this.yMax_, this.y_)
+
+        this.d_ = `${this.d_} M${this.x_} ${this.y_}`
+    }
+
     get path(): string {
         return this.d_
     }
