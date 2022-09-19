@@ -44,7 +44,7 @@ const Action = ({
                 onActionChange([type, arg])
             }
         }
-        else if (type === "forward") {
+        else if (type === "forward" || type === "move") {
             const arg = Number(actionValuesEl.current?.value ?? 1)
             if (Number.isNaN(arg)) {
                 onActionChange([type, 1])
@@ -66,12 +66,13 @@ const Action = ({
         >
             <option value="noop">Noop</option>
             <option value="forward">Forward</option>
+            <option value="move">move</option>
             <option value="turn">Turn</option>
             <option value="push">Push</option>
             <option value="pop">Pop</option>
         </select>
         {
-            (actionType === "forward") && <input
+            (actionType === "forward" || actionType === "move") && <input
                 ref={ actionValuesEl }
                 type="number"
                 min="0"
@@ -98,12 +99,30 @@ const RenderingRulesInspector = () => {
     const alphabet = useAppSelector(selectAlphabet)
     const renderingRules = useAppSelector(selectRenderingRules)
 
+    const actionFallback = (symbol: ILSystemSymbols) => {
+        if (symbol === "F") {
+            return ["forward", 1]
+        } else if (symbol === "M") {
+            return ["move", 1]
+        } else if (symbol === "+") {
+            return ["turn", Math.PI/2]
+        } else if (symbol === "-") {
+            return ["turn", -Math.PI/2]
+        } else if (symbol === "[") {
+            return ["push"]
+        } else if (symbol === "]") {
+            return ["pop"]
+        } else {
+            return ["noop"]
+        }
+    }
+
     const dispatch = useAppDispatch()
 
     React.useEffect(() => {
         const initial = Object.assign({}, ...alphabet.map(symbol => {
             return {
-                [symbol]: renderingRules[symbol] ?? ["noop"],
+                [symbol]: renderingRules[symbol] ?? actionFallback(symbol),
             } as ILSystemRenderingRulesMap
         }))
         dispatch(setRenderingRules(initial))
