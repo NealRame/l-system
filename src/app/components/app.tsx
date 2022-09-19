@@ -1,5 +1,10 @@
 import * as React from "react"
 
+import {
+    LSystemCanvasRenderer,
+    LSystemSVGRenderer,
+} from "../../lib"
+
 import { useAppSelector } from "../hooks"
 import {
     selectProductionRules,
@@ -9,8 +14,6 @@ import {
 } from "../slices"
 
 import Inspector from "./inspector"
-import LSystemCanvasRenderer from "./canvas"
-import LSystemSVGRenderer from "./svg"
 
 const useAppInspectorSelector = () => {
     const productionRules = useAppSelector(selectProductionRules)

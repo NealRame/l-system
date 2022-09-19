@@ -1,15 +1,18 @@
 import * as React from "react"
 
+import type {
+    ILSystemSymbols,
+} from "../types"
+
 import {
-    type ILSystemSymbols,
     use2DPathRenderer,
-} from "../../lib"
+} from "./hooks"
 
 import type {
     ILSystemRendererComponentProps,
 } from "./types"
 
-function LSystemSVGRenderer<Alphabet extends ILSystemSymbols>(
+export function LSystemSVGRenderer<Alphabet extends ILSystemSymbols>(
     props: ILSystemRendererComponentProps<Alphabet>,
 ) {
     const {
@@ -50,5 +53,3 @@ function LSystemSVGRenderer<Alphabet extends ILSystemSymbols>(
         vectorEffect="non-scaling-stroke"
     /></g></svg>
 }
-
-export default LSystemSVGRenderer

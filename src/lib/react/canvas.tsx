@@ -1,15 +1,18 @@
 import * as React from "react"
 
+import type {
+    ILSystemSymbols,
+} from "../types"
+
 import {
-    type ILSystemSymbols,
     use2DPathRenderer,
-} from "../../lib"
+} from "./hooks"
 
 import type {
     ILSystemRendererComponentProps,
 } from "./types"
 
-function LSystemCanvasRenderer<Alphabet extends ILSystemSymbols>(
+export function LSystemCanvasRenderer<Alphabet extends ILSystemSymbols>(
     props: ILSystemRendererComponentProps<Alphabet>,
 ) {
     const {
@@ -87,5 +90,3 @@ function LSystemCanvasRenderer<Alphabet extends ILSystemSymbols>(
 
     return <canvas id="l-system-renderer" ref={canvasEl}/>
 }
-
-export default LSystemCanvasRenderer
