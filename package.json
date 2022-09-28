@@ -24,7 +24,7 @@
     "react",
     "svg"
   ],
-  "author": "Julien Graziano",
+  "author": "Julien Graziano <julien@graziano.fr>",
   "license": "MIT",
   "peerDependencies": {
     "react": "^18.0.0",
