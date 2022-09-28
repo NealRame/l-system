@@ -2,7 +2,7 @@
   "name": "@nealrame/react-l-system",
   "version": "0.1.0",
   "description": "L-System for your React application.",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "build": "./scripts/build.sh",
     "clean": "./scripts/clean.sh",
