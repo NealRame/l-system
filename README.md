@@ -1,4 +1,4 @@
-# React-L-System
+# @nealRame/react-l-system
 
 An implementation of Lindenmayer Systems for your React application.
 
