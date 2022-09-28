@@ -1,4 +1,4 @@
-# L-System
+# React-L-System
 
 An implementation of Lindenmayer Systems for your React application.
 
