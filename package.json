@@ -9,6 +9,10 @@
     "dev": "webpack serve --config ./src/app/webpack.config.js",
     "test": "./scripts/test.sh"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NealRame/react-l-system.git"
+  },
   "keywords": [
     "l-system",
     "canvas",
