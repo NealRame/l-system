@@ -1,6 +1,6 @@
 {
   "name": "react-l-system",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "L-System for your React application.",
   "main": "index.js",
   "scripts": {
