@@ -33,8 +33,4 @@ const app = () => {
 ```
 
 Which should produce something like :
-<div style="background-color: black">
-    <p align="center">
-        <img src="./docs/images/koch_snowflake.png"/>
-    </p>
-</div>
+<p align="center"><img src="./docs/images/koch_snowflake.png"/></p>
